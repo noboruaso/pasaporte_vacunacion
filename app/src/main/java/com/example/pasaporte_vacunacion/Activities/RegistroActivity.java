@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 
 public class RegistroActivity extends AppCompatActivity {
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
-    private Button fechaCad, fechaNac;
+    private Button fechaCad, fechaNac, btnRegistrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,19 @@ public class RegistroActivity extends AppCompatActivity {
         fechaCad = findViewById(R.id.btnFechaCad);
         fechaNac = findViewById(R.id.btnFechaNac);
 
+        btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity();
+            }
+        });
+
+    }
+
+    public void LoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void initDateCad() {

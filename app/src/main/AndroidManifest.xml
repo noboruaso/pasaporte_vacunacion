@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pasaporte_Vacunacion">
-        <activity android:name=".Activities.RecuperarActivity"
+        <activity android:name=".Activities.PasaporteActivity"></activity>
+        <activity
+            android:name=".Activities.RecuperarActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
-
-        <activity android:name=".Activities.RegistroActivity"
+        <activity
+            android:name=".Activities.RegistroActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
-
         <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar">
