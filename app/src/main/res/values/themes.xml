@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Pasaporte_Vacunacion" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Pasaporte_Vacunacion" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#D92537</item>
         <item name="colorPrimaryVariant">#BF2130</item>
