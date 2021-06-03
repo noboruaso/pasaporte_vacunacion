@@ -5,14 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.pasaporte_vacunacion.BD.Estructura_BD;
+import com.example.pasaporte_vacunacion.OpenHelper.SQLite_OpenHelper;
 import com.example.pasaporte_vacunacion.R;
 
 import java.util.Calendar;
@@ -20,6 +27,9 @@ import java.util.Calendar;
 public class RegistroActivity extends AppCompatActivity {
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
     private Button fechaCad, fechaNac, btnRegistrar;
+    private EditText etdni, etcorreo, etpassword, etrepassword;
+    private CheckBox cbaceptar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +39,52 @@ public class RegistroActivity extends AppCompatActivity {
         fechaCad = findViewById(R.id.btnFechaCad);
         fechaNac = findViewById(R.id.btnFechaNac);
 
+        etdni = (EditText) findViewById(R.id.edDNI);
+        etcorreo = (EditText) findViewById(R.id.edCorreo);
+        etpassword = (EditText) findViewById(R.id.edContraseña);
+        etrepassword = (EditText) findViewById(R.id.edContraseá2);
+        cbaceptar = (CheckBox) findViewById(R.id.checkAceptar);
+
+        final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
+
         btnRegistrar = findViewById(R.id.btnRegistrar);
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity();
+                if(etdni.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),"Debe completar el campo de dni!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if(etcorreo.getText().toString().equals("")){
+                        Toast.makeText(getApplicationContext(),"Debe completar el campo de correo electrónico!!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if(etpassword.getText().toString().equals("")){
+                            Toast.makeText(getApplicationContext(),"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if(etrepassword.getText().toString().equals("")){
+                                Toast.makeText(getApplicationContext(),"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                if(etpassword.getText().toString().equals(etrepassword.getText().toString())) {
+                                    if (cbaceptar.isChecked()) {
+                                        SQLiteDatabase db = helper.getWritableDatabase();
+                                        ContentValues values = new ContentValues();
+                                        values.put(Estructura_BD.NOMBRE_COLUMN2,etdni.getText().toString());
+                                        values.put(Estructura_BD.NOMBRE_COLUMN3,etcorreo.getText().toString());
+                                        values.put(Estructura_BD.NOMBRE_COLUMN4,etpassword.getText().toString());
+
+                                        db.insert(Estructura_BD.TABLE_NAME, null,values);
+                                        Toast.makeText(getApplicationContext(),"Se ha registrado satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+                                        LoginActivity();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else{
+                                    Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
+                                    etrepassword.setText("");
+                                }
+                            }
+                        }
+                    }
+                }
             }
         });
 
