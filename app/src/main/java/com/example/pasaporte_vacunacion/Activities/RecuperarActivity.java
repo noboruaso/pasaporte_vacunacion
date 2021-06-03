@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.pasaporte_vacunacion.Activities.Activities.MainActivity;
 import com.example.pasaporte_vacunacion.R;
@@ -25,6 +26,7 @@ public class RecuperarActivity extends AppCompatActivity {
         btnRecuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Se te ha enviado un correo de recuperación!!", Toast.LENGTH_SHORT).show();
                 LoginActivity();
             }
         });
