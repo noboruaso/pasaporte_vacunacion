@@ -7,6 +7,8 @@
     tools:context=".Activities.PasaporteActivity"
     android:background="@color/fondo">
 
+    <include layout="@layout/toolbar" android:id="@+id/tool_bar"></include>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="300dp"

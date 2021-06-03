@@ -7,6 +7,8 @@
     android:background="@drawable/fondo"
     tools:context=".Activities.LoginActivity">
 
+    <include layout="@layout/toolbar" android:id="@+id/tool_bar"></include>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="300dp"

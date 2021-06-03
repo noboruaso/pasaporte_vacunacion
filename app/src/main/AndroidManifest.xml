@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pasaporte_Vacunacion">
-        <activity android:name=".Activities.PasaporteActivity"></activity>
+        <activity android:name=".Activities.Activities.MainActivity"></activity>
+        <activity android:name=".Activities.PasaporteActivity" />
         <activity
             android:name=".Activities.RecuperarActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
