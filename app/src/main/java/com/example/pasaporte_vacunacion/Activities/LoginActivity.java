@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 RegistroActivity();
             }
         });
