@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.pasaporte_vacunacion.BD.Estructura_BD;
 
 public class SQLite_OpenHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "vacuna_pass.db";
 
     public SQLite_OpenHelper(Context context){
