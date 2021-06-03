@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
             try (Cursor cursor = helper.consultarUsuario(etDni.getText().toString(), etPassword.getText().toString())){
                 if(cursor.getCount() > 0){
                     PasaporteActivity();
-                    Toast.makeText(getApplicationContext(), "Bienvenido!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bienvenido(a) !!", Toast.LENGTH_SHORT).show();
                 } else {
                     if(etDni.getText().toString().equals("") && etPassword.getText().toString().equals("")){
                         Toast.makeText(getApplicationContext(), "Debes ingresar dni y contraseña!!", Toast.LENGTH_SHORT).show();
