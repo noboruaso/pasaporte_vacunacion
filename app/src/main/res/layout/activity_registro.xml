@@ -127,7 +127,7 @@
             android:text="" />
 
         <CheckBox
-            android:id="@+id/checkSesion"
+            android:id="@+id/checkAceptar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"

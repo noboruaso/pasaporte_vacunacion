@@ -1,5 +1,6 @@
 package com.example.pasaporte_vacunacion.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.pasaporte_vacunacion.R;
 
 import java.util.Calendar;
@@ -17,14 +20,12 @@ import java.util.Calendar;
 public class RegistroActivity extends AppCompatActivity {
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
     private Button fechaCad, fechaNac, btnRegistrar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         initDateCad();
         initDateNac();
-
         fechaCad = findViewById(R.id.btnFechaCad);
         fechaNac = findViewById(R.id.btnFechaNac);
 
