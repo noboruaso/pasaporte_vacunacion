@@ -51,28 +51,42 @@ public class RegistroActivity extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etpassword.getText().toString().equals(etrepassword.getText().toString())) {
-                    if (cbaceptar.isChecked()) {
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        ContentValues values = new ContentValues();
-                        values.put(Estructura_BD.NOMBRE_COLUMN2,etdni.getText().toString());
-                        values.put(Estructura_BD.NOMBRE_COLUMN3,etcorreo.getText().toString());
-                        values.put(Estructura_BD.NOMBRE_COLUMN4,etpassword.getText().toString());
-
-                        db.insert(Estructura_BD.TABLE_NAME, null,values);
-                        Toast.makeText(getApplicationContext(),"Registro grabado satisfactoriamente", Toast.LENGTH_SHORT).show();
-                        LoginActivity();
+                if(etdni.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(),"Debe completar el campo de dni!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if(etcorreo.getText().toString().equals("")){
+                        Toast.makeText(getApplicationContext(),"Debe completar el campo de correo electrónico!!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_LONG).show();
+                        if(etpassword.getText().toString().equals("")){
+                            Toast.makeText(getApplicationContext(),"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if(etrepassword.getText().toString().equals("")){
+                                Toast.makeText(getApplicationContext(),"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                if(etpassword.getText().toString().equals(etrepassword.getText().toString())) {
+                                    if (cbaceptar.isChecked()) {
+                                        SQLiteDatabase db = helper.getWritableDatabase();
+                                        ContentValues values = new ContentValues();
+                                        values.put(Estructura_BD.NOMBRE_COLUMN2,etdni.getText().toString());
+                                        values.put(Estructura_BD.NOMBRE_COLUMN3,etcorreo.getText().toString());
+                                        values.put(Estructura_BD.NOMBRE_COLUMN4,etpassword.getText().toString());
+
+                                        db.insert(Estructura_BD.TABLE_NAME, null,values);
+                                        Toast.makeText(getApplicationContext(),"Se ha registrado satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+                                        LoginActivity();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else{
+                                    Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
+                                    etrepassword.setText("");
+                                }
+                            }
+                        }
                     }
-                } else{
-                    Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden!!", Toast.LENGTH_LONG).show();
-                    etrepassword.setText("");
                 }
             }
         });
-
-
     }
 
     public void LoginActivity() {

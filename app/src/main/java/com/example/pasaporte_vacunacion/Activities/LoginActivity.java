@@ -35,12 +35,24 @@ public class LoginActivity extends AppCompatActivity {
                     PasaporteActivity();
                     Toast.makeText(getApplicationContext(), "Bienvenido!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Usuario o password incorrecta!!", Toast.LENGTH_SHORT).show();
+                    if(etDni.getText().toString().equals("") && etPassword.getText().toString().equals("")){
+                        Toast.makeText(getApplicationContext(), "Debes ingresar dni y contraseña!!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Dni o contraseña incorrecta!!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             etDni.setText("");
             etPassword.setText("");
             etDni.requestFocus();
+        });
+
+        recuperar = findViewById(R.id.txtRecuperar);
+        recuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RecuperarActivity();
+            }
         });
 
         registrar = findViewById(R.id.txtRegistrar);
@@ -61,4 +73,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PasaporteActivity.class);
         startActivity(intent);
     }
+
+    public void RecuperarActivity() {
+        Intent intent = new Intent(this, RecuperarActivity.class);
+        startActivity(intent);
+    }
+
 }
