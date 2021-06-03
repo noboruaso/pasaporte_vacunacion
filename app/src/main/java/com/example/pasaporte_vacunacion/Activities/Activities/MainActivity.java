@@ -29,5 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void llenarNoticias(){
         lstNoti.add(new Noticia("covid 19","fkfjewkfw","wede",R.drawable.img1));
+        lstNoti.add(new Noticia("covid","rfeg","frsf",R.drawable.img1));
     }
 }
