@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
@@ -21,9 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.pasaporte_vacunacion.Activities.Interfaces.PersonaAPI;
-import com.example.pasaporte_vacunacion.BD.Estructura_BD;
 import com.example.pasaporte_vacunacion.Beans.Persona;
-import com.example.pasaporte_vacunacion.OpenHelper.SQLite_OpenHelper;
 import com.example.pasaporte_vacunacion.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +32,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -47,7 +44,8 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText etdni, etcorreo, etpassword, etrepassword;
     private CheckBox cbaceptar;
     private ProgressDialog progressDialog;
-    private String dni, email, password, repass = "";
+    private String dni, email, password, hashPassword, repass = "";
+    private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private String fullName = "Persona no identificada";
     private String api_principal = "https://dni.optimizeperu.com/api/";
     private String api = "";
@@ -77,8 +75,6 @@ public class RegistroActivity extends AppCompatActivity {
         api = api_principal + "persons/";
         etdni.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
 
-        //final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
-
         btnRegistrar = findViewById(R.id.btnRegistrar);
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,21 +87,14 @@ public class RegistroActivity extends AppCompatActivity {
                 if(!dni.isEmpty()){
                     if(dni.length() >= 8){
                         if(!email.isEmpty()){
-                            if(!password.isEmpty()){
-                                if(password.length() >= 6) {
-                                    if(!repass.isEmpty()){
-                                        if(password.equals(repass)) {
-                                            if (cbaceptar.isChecked()) {
-                                        /*
-                                        SQLiteDatabase db = helper.getWritableDatabase();
-                                        ContentValues values = new ContentValues();
-                                        values.put(Estructura_BD.NOMBRE_COLUMN2,etdni.getText().toString());
-                                        values.put(Estructura_BD.NOMBRE_COLUMN3,etcorreo.getText().toString());
-                                        values.put(Estructura_BD.NOMBRE_COLUMN4,etpassword.getText().toString());
-                                        db.insert(Estructura_BD.TABLE_NAME, null,values);
-                                         */
-                                                IniciarDialog();
-                                                registrarUsuario();
+                            if(email.trim().matches(emailPattern)) {
+                                if(!password.isEmpty()){
+                                    if(password.length() >= 6) {
+                                        if(!repass.isEmpty()){
+                                            if(password.equals(repass)) {
+                                                if (cbaceptar.isChecked()) {
+                                                    IniciarDialog();
+                                                    registrarUsuario();
                                                 /*
                                                 // API DE CONSULTAS DE DNI SOLO PERMITE 50 SOLICITUDES X DÍA
                                                 Retrofit retrofit = new Retrofit.Builder().baseUrl("https://dni.optimizeperu.com/")
@@ -143,21 +132,24 @@ public class RegistroActivity extends AppCompatActivity {
                                                         Toast.makeText(RegistroActivity.this, "Ups! Error de conexión.", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }); */
-                                            } else {
-                                                Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else{
+                                                Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
+                                                etrepassword.setText("");
                                             }
-                                        } else{
-                                            Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
-                                            etrepassword.setText("");
+                                        } else {
+                                            Toast.makeText(getApplicationContext(),"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        Toast.makeText(getApplicationContext(),"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"La contraseña debe tener mínimo 6 caracteres!!", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(getApplicationContext(),"La contraseña debe tener mínimo 6 caracteres!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(getApplicationContext(),"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(getApplicationContext(),"Debe completar el campo de correo electrónico!!", Toast.LENGTH_SHORT).show();
@@ -185,9 +177,11 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
+                    hashPassword = BCrypt.withDefaults().hashToString(12,password.toCharArray());
                     Map<String, Object> map = new HashMap<>();
                     map.put("email", email);
-                    map.put("password",password);
+                    map.put("password",hashPassword);
                     map.put("dni", dni);
                     map.put("name",fullName);
 

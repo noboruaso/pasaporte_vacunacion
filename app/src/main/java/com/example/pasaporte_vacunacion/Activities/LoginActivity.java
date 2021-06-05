@@ -1,11 +1,10 @@
 package com.example.pasaporte_vacunacion.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
@@ -14,17 +13,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pasaporte_vacunacion.OpenHelper.SQLite_OpenHelper;
 import com.example.pasaporte_vacunacion.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView recuperar, registrar;
-    private EditText etDni, etPassword;
+    private EditText etEmail, etPassword;
     private Button btnLogin;
+    private String email, password;
+    private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private DatabaseReference vacuna_pass_db;
     private ProgressDialog progressDialog;
+    private FirebaseAuth Auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,33 +37,39 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         vacuna_pass_db = FirebaseDatabase.getInstance().getReference();
+        Auth = FirebaseAuth.getInstance();
+        etEmail = (EditText) findViewById(R.id.edEmail);
+        etPassword = (EditText) findViewById(R.id.edPassword);
 
-        final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
+        recuperar = findViewById(R.id.txtRecuperar);
+        registrar = findViewById(R.id.txtRegistrar);
+
         btnLogin = (Button) findViewById(R.id.btnIniciarSesion);
         btnLogin.setOnClickListener((v) -> {
 
-            etDni = (EditText) findViewById(R.id.edDni);
-            etPassword = (EditText) findViewById(R.id.edPassword);
+            email = etEmail.getText().toString();
+            password = etPassword.getText().toString();
 
-            try (Cursor cursor = helper.consultarUsuario(etDni.getText().toString(), etPassword.getText().toString())){
-                if(cursor.getCount() > 0){
-                    PasaporteActivity();
-                    Toast.makeText(getApplicationContext(), "Bienvenido(a) !!", Toast.LENGTH_SHORT).show();
-                } else {
-                    if(etDni.getText().toString().equals("") && etPassword.getText().toString().equals("")){
-                        Toast.makeText(getApplicationContext(), "Debes ingresar dni y contraseña!!", Toast.LENGTH_SHORT).show();
+            if(!email.isEmpty()) {
+                if(!password.isEmpty()){
+                    if (email.trim().matches(emailPattern)) {
+                        IniciarDialog();
+                        loginUsuario();
+
+                        etEmail.setText("");
+                        etPassword.setText("");
+                        etEmail.requestFocus();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Dni o contraseña incorrecta!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(),"Ingresar contraseña!!",Toast.LENGTH_SHORT).show();
                 }
+            } else {
+                Toast.makeText(getApplicationContext(),"Ingresar correo electrónico!!",Toast.LENGTH_SHORT).show();
             }
-            etDni.setText("");
-            etPassword.setText("");
-            etDni.requestFocus();
-
         });
 
-        recuperar = findViewById(R.id.txtRecuperar);
         recuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,12 +77,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        registrar = findViewById(R.id.txtRegistrar);
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 RegistroActivity();
+            }
+        });
+    }
+
+    public void loginUsuario(){
+        Auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                try {
+                    if(task.isSuccessful()){
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "Bienvenido(a) !!", Toast.LENGTH_SHORT).show();
+                        PasaporteActivity();
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "No se pudo iniciar sesión. Verifique sus credenciales!!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -91,4 +121,10 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void IniciarDialog(){
+        progressDialog = new ProgressDialog(LoginActivity.this, R.style.MyAlertDialogStyle);
+        progressDialog.setMessage("Procesando Información ...");
+        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+    }
 }

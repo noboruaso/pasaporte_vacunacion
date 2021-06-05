@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edDni"
+            android:id="@+id/edEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -30,8 +30,8 @@
             android:layout_marginRight="25dp"
             android:backgroundTint="@color/variante"
             android:ems="10"
-            android:hint="DNI"
-            android:inputType="textPersonName"
+            android:hint="Correo"
+            android:inputType="textPersonName|textWebEmailAddress"
             android:text="" />
 
         <EditText
