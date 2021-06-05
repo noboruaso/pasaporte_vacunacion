@@ -140,9 +140,9 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void IniciarDialog(){
-        progressDialog = new ProgressDialog(RegistroActivity.this);
+        progressDialog = new ProgressDialog(RegistroActivity.this, R.style.MyAlertDialogStyle);
         progressDialog.setMessage("Procesando Información ...");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
     }
 

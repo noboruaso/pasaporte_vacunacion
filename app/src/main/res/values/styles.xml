@@ -5,4 +5,7 @@
         <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
         <item name="colorAccent">@color/design_default_color_error</item>
     </style>
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/variante</item>
+    </style>
 </resources>
