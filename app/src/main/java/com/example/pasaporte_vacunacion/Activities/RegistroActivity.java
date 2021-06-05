@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import retrofit2.Call;
@@ -44,7 +46,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText etdni, etcorreo, etpassword, etrepassword;
     private CheckBox cbaceptar;
     private ProgressDialog progressDialog;
-    private String dni, email, password, hashPassword, repass = "";
+    private String dni, vacuna, dateBirth, dateExpiration, dateVaccine, email, password, hashPassword, repass = "";
     private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private String fullName = "Persona no identificada";
     private String api_principal = "https://dni.optimizeperu.com/api/";
@@ -83,6 +85,8 @@ public class RegistroActivity extends AppCompatActivity {
                 email = etcorreo.getText().toString();
                 password = etpassword.getText().toString();
                 repass = etrepassword.getText().toString();
+                dateBirth = fechaNac.getText().toString();
+                dateExpiration = fechaCad.getText().toString();
 
                 if(!dni.isEmpty()){
                     if(dni.length() >= 8){
@@ -178,12 +182,19 @@ public class RegistroActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
+                    vacuna = vacunaGenerate();
+                    dateVaccine = vacunaDateGenerate();
                     hashPassword = BCrypt.withDefaults().hashToString(12,password.toCharArray());
                     Map<String, Object> map = new HashMap<>();
                     map.put("email", email);
                     map.put("password",hashPassword);
                     map.put("dni", dni);
                     map.put("name",fullName);
+                    map.put("vaccine",vacuna);
+                    map.put("date_birth",dateBirth);
+                    map.put("date_expiration",dateExpiration);
+                    map.put("date_vaccine",dateVaccine);
+
 
                     String id = Auth.getCurrentUser().getUid();
 
@@ -298,5 +309,39 @@ public class RegistroActivity extends AppCompatActivity {
 
     public void abrirDateNac(View view) {
         NacPickerDialog.show();
+    }
+
+    public String vacunaGenerate() {
+        String[] vacc = {
+                    "AZD1222 - Oxford/AstraZeneca",
+                    "BBIBP-CorV - Sinopharm",
+                    "BNTI62b2 - BioNTech/Pfizer",
+                    "Covaxina - Bharat Biotech",
+                    "Covishield - Instituto de suero de la india",
+                    "mRNA-1273 - Moderna",
+                    "Sputnik V - Gamaleya"
+                };
+        Random rand = new Random();
+        int index = rand.nextInt(7);
+        return vacc [index];
+    }
+
+    public String vacunaDateGenerate(){
+        String[] mesA = { "JUL","AGO","SEP","OCT","NOV","DIC" };
+        String[] mesB = { "ENE","FEB","MAR","ABR","MAY","JUN", };
+        String mes = "";
+        int[] año = {2020, 2021};
+        Random rand = new Random();
+
+        int iAño = rand.nextInt(2);
+        int dia = (int)(Math.random()*28+1);
+        int iMes = rand.nextInt(6);
+        if(año[iAño] == 2020){
+            mes = mesA[iMes];
+        } else {
+            mes = mesB[iMes];
+        }
+
+        return mes + " " + dia + " " + año[iAño];
     }
 }

@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Bienvenido(a) !!", Toast.LENGTH_SHORT).show();
                         PasaporteActivity();
+                        finish();
                     } else {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "No se pudo iniciar sesión. Verifique sus credenciales!!", Toast.LENGTH_SHORT).show();
