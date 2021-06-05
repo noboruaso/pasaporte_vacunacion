@@ -195,7 +195,6 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("date_expiration",dateExpiration);
                     map.put("date_vaccine",dateVaccine);
 
-
                     String id = Auth.getCurrentUser().getUid();
 
                     Database.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     if(task.isSuccessful()){
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Bienvenido(a) !!", Toast.LENGTH_SHORT).show();
                         PasaporteActivity();
                         finish();
                     } else {

@@ -47,7 +47,7 @@ public class AdaptadorNoticias extends RecyclerView.Adapter<AdaptadorNoticias.Vi
             super(itemView);
             tvNombre = (TextView) itemView.findViewById(R.id.idNombre);
             tvDescripcion = (TextView) itemView.findViewById(R.id.idInfo);
-            tvfecha = (TextView) itemView.findViewById(R.id.txtFecha);
+            tvfecha = (TextView) itemView.findViewById(R.id.txtFechaVac);
         }
     }
 }
