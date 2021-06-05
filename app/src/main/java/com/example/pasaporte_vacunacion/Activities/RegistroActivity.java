@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,17 +20,28 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.pasaporte_vacunacion.Activities.Interfaces.PersonaAPI;
 import com.example.pasaporte_vacunacion.BD.Estructura_BD;
+import com.example.pasaporte_vacunacion.Beans.Persona;
 import com.example.pasaporte_vacunacion.OpenHelper.SQLite_OpenHelper;
 import com.example.pasaporte_vacunacion.R;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegistroActivity extends AppCompatActivity {
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
     private Button fechaCad, fechaNac, btnRegistrar;
     private EditText etdni, etcorreo, etpassword, etrepassword;
     private CheckBox cbaceptar;
+    private ProgressDialog progressDialog;
+    private String api_principal = "https://dni.optimizeperu.com/api/";
+    private String api = "";
+    private Integer estado = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +58,10 @@ public class RegistroActivity extends AppCompatActivity {
         etrepassword = (EditText) findViewById(R.id.edContraseá2);
         cbaceptar = (CheckBox) findViewById(R.id.checkAceptar);
 
-        final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
+        api = api_principal + "persons/";
+        etdni.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+
+        //final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
 
         btnRegistrar = findViewById(R.id.btnRegistrar);
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
@@ -65,15 +81,49 @@ public class RegistroActivity extends AppCompatActivity {
                             } else {
                                 if(etpassword.getText().toString().equals(etrepassword.getText().toString())) {
                                     if (cbaceptar.isChecked()) {
+                                        /*
                                         SQLiteDatabase db = helper.getWritableDatabase();
                                         ContentValues values = new ContentValues();
                                         values.put(Estructura_BD.NOMBRE_COLUMN2,etdni.getText().toString());
                                         values.put(Estructura_BD.NOMBRE_COLUMN3,etcorreo.getText().toString());
                                         values.put(Estructura_BD.NOMBRE_COLUMN4,etpassword.getText().toString());
-
                                         db.insert(Estructura_BD.TABLE_NAME, null,values);
-                                        Toast.makeText(getApplicationContext(),"Se ha registrado satisfactoriamente!!", Toast.LENGTH_SHORT).show();
-                                        LoginActivity();
+                                         */
+                                        IniciarDialog();
+                                        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://dni.optimizeperu.com/")
+                                                .addConverterFactory(GsonConverterFactory.create()).build();
+                                        PersonaAPI personaAPI = retrofit.create(PersonaAPI.class);
+                                        Call<Persona> call = personaAPI.find(etdni.getText().toString());
+                                        call.enqueue(new Callback<Persona>() {
+                                            @Override
+                                            public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
+                                                try {
+                                                    if(response.isSuccessful()){
+                                                        Persona p = response.body();
+                                                        //txtnombre.setText(p.getName());
+                                                        if(etdni.getText().toString().equals(p.getDni())){
+                                                            progressDialog.dismiss();
+                                                            estado = 1;
+                                                            Toast.makeText(getApplicationContext(),"Se ha registrado satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+                                                            //  LoginActivity();
+                                                        } else {
+                                                            progressDialog.dismiss();
+                                                            estado = 0;
+                                                            Toast.makeText(RegistroActivity.this, "El DNI ingresado no es válido!", Toast.LENGTH_SHORT).show();
+                                                            etdni.setText("");
+                                                        }
+                                                    }
+                                                } catch (Exception e){
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(RegistroActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                            @Override
+                                            public void onFailure(Call<Persona> call, Throwable t) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(RegistroActivity.this, "Ups! Error de conexión.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
                                     }
@@ -87,7 +137,13 @@ public class RegistroActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void IniciarDialog(){
+        progressDialog = new ProgressDialog(RegistroActivity.this);
+        progressDialog.setMessage("Procesando Información ...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     public void LoginActivity() {
