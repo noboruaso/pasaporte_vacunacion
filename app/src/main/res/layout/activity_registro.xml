@@ -97,7 +97,7 @@
             android:backgroundTint="@color/variante"
             android:ems="10"
             android:hint="Ingrese su correo electrónico"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:text="" />
 
         <EditText
