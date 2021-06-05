@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "526018239826",
+    "project_id": "pasaporte-de-vacunacion-8ad3c",
+    "storage_bucket": "pasaporte-de-vacunacion-8ad3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526018239826:android:cfd9e1ab22a24ff280ae8b",
+        "android_client_info": {
+          "package_name": "com.example.pasaporte_vacunacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526018239826-2mu8oaogqj3ubvc3kpmqr2ig7tbhber0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pasaporte_vacunacion",
+            "certificate_hash": "37ac19ac8963a4c8dbeef63103ca571248b24fac"
+          }
+        },
+        {
+          "client_id": "526018239826-r16k65uhi9p5p7ehns0s4d2s0nbjj0la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdaWhTqextWsjMcvwzzxprmSH2TBLNeyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526018239826-r16k65uhi9p5p7ehns0s4d2s0nbjj0la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

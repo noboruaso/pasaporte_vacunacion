@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,20 +14,26 @@ import android.widget.Toast;
 
 import com.example.pasaporte_vacunacion.OpenHelper.SQLite_OpenHelper;
 import com.example.pasaporte_vacunacion.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView recuperar, registrar;
     private EditText etDni, etPassword;
     private Button btnLogin;
+    private DatabaseReference vacuna_pass_db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        vacuna_pass_db = FirebaseDatabase.getInstance().getReference();
+
         final SQLite_OpenHelper helper = new SQLite_OpenHelper(this);
         btnLogin = (Button) findViewById(R.id.btnIniciarSesion);
         btnLogin.setOnClickListener((v) -> {
+
             etDni = (EditText) findViewById(R.id.edDni);
             etPassword = (EditText) findViewById(R.id.edPassword);
 
@@ -45,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             etDni.setText("");
             etPassword.setText("");
             etDni.requestFocus();
+
         });
 
         recuperar = findViewById(R.id.txtRecuperar);
