@@ -51,15 +51,15 @@ que puedas restablecer tu contraseña"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edDNI"
+            android:id="@+id/edRemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/variante"
             android:ems="10"
-            android:hint="Ingrese su DNI"
-            android:inputType="textPersonName"
+            android:hint="Ingrese su correo"
+            android:inputType="textEmailAddress"
             android:text="" />
 
         <Button
