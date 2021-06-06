@@ -4,11 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +25,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class PasaporteActivity extends AppCompatActivity {
     private TextView tvdni,tvfullname,tvvacc,tvdatevacc;
+    private String fullname, dni, vacc, datevacc, codeText = "";
+    private ImageView qrView;
     private DatabaseReference Vaccpass_db;
     private String uid;
     private FirebaseAuth Auth;
@@ -35,6 +47,7 @@ public class PasaporteActivity extends AppCompatActivity {
         Auth = FirebaseAuth.getInstance();
         uid = Auth.getCurrentUser().getUid();
         Vaccpass_db = FirebaseDatabase.getInstance().getReference();
+        qrView = (ImageView) findViewById(R.id.imgQR);
 
         tvfullname = (TextView) findViewById(R.id.txtNomApe);
         tvdni = (TextView) findViewById(R.id.txtDNI);
@@ -46,10 +59,22 @@ public class PasaporteActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
                     if (snapshot.exists()){
-                        tvfullname.setText(snapshot.child("name").getValue().toString());
-                        tvdni.setText(snapshot.child("dni").getValue().toString());
-                        tvvacc.setText(snapshot.child("vaccine").getValue().toString());
-                        tvdatevacc.setText(snapshot.child("date_vaccine").getValue().toString());
+                        fullname = snapshot.child("name").getValue().toString();
+                        dni = snapshot.child("dni").getValue().toString();
+                        vacc = snapshot.child("vaccine").getValue().toString();
+                        datevacc = snapshot.child("date_vaccine").getValue().toString();
+
+                        tvfullname.setText(fullname);
+                        tvdni.setText(dni);
+                        tvvacc.setText(vacc);
+                        tvdatevacc.setText(datevacc);
+
+                        codeText = "Nombre completo: " + fullname + "\n" +
+                                   "DNI: " + dni + "\n" +
+                                   "Vacuna - Laboratorio: " + vacc + "\n" +
+                                   "Fecha de vacunacion: " + datevacc + "\n";
+
+                        QrGenerator(codeText);
                     } else {
                         Toast.makeText(PasaporteActivity.this,"Error al obtener los datos!!", Toast.LENGTH_SHORT).show();
                     }
@@ -67,7 +92,15 @@ public class PasaporteActivity extends AppCompatActivity {
     }
 
     public void QrGenerator(String text){
-
+        MultiFormatWriter writer = new MultiFormatWriter();
+        try {
+            BitMatrix matrix = writer.encode(text, BarcodeFormat.QR_CODE,120,120);
+            BarcodeEncoder encoder = new BarcodeEncoder();
+            Bitmap bitmap = encoder.createBitmap(matrix);
+            qrView.setImageBitmap(bitmap);
+        } catch (WriterException we){
+            we.printStackTrace();
+        }
     }
 
     @Override
