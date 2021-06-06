@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +23,7 @@ public class RecuperarActivity extends AppCompatActivity {
     Button btnRecuperar;
     private EditText edemailRe;
     private String email;
+    private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private FirebaseAuth Auth;
     private ProgressDialog progressDialog;
 
@@ -35,16 +35,15 @@ public class RecuperarActivity extends AppCompatActivity {
         Auth = FirebaseAuth.getInstance();
         edemailRe = (EditText)findViewById(R.id.edRemail);
 
-        btnRecuperar = findViewById(R.id.btnRecuperar);
-        btnRecuperar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnRecuperar = (Button) findViewById(R.id.btnRecuperar);
+        btnRecuperar.setOnClickListener((v) -> {
                 email = edemailRe.getText().toString();
                 if(!email.isEmpty()){
-                    IniciarDialog();
-                    ReestablecerContraseña();
-                }
-            }
+                    if (email.trim().matches(emailPattern)) {
+                        IniciarDialog();
+                        ReestablecerContraseña();
+                    } else { Toast.makeText(RecuperarActivity.this,"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show(); }
+                } else { Toast.makeText(RecuperarActivity.this,"Ingresar correo electrónico!!", Toast.LENGTH_SHORT).show(); }
         });
     }
 
@@ -55,15 +54,17 @@ public class RecuperarActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 try {
                     if (task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Se envió el correo satisfactoriamente!!", Toast.LENGTH_SHORT).show();
-                        LoginActivity();
-                    } else {
-                        Toast.makeText(getApplicationContext(),"No se pudo enviar el correo de reestablecimiento!!", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-                progressDialog.dismiss();
+                        new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(RecuperarActivity.this,"Se envió el correo satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+                                    LoginActivity();
+                                    finish();
+                                }
+                            }, 2000);
+                    } else { ToastSetTimeOut("No se pudo enviar el correo de reestablecimiento!!"); }
+                } catch (Exception e) { ToastSetTimeOut(e.getLocalizedMessage()); }
             }
         });
     }
@@ -100,9 +101,17 @@ public class RecuperarActivity extends AppCompatActivity {
 
     private void IniciarDialog(){
         progressDialog = new ProgressDialog(RecuperarActivity.this, R.style.MyAlertDialogStyle);
-        progressDialog.setMessage("Procesando Información ...");
-        progressDialog.setCanceledOnTouchOutside(false);
-        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("Enviando correo ...");
         progressDialog.show();
+    }
+
+    private void ToastSetTimeOut(String message){
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        progressDialog.dismiss();
+                        Toast.makeText(RecuperarActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }, 2000);
     }
 }

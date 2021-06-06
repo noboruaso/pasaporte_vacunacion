@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private String email, password;
     private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    private DatabaseReference vacuna_pass_db;
+    private DatabaseReference db;
     private ProgressDialog progressDialog;
     private FirebaseAuth Auth;
 
@@ -36,38 +35,25 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        vacuna_pass_db = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseDatabase.getInstance().getReference();
         Auth = FirebaseAuth.getInstance();
         etEmail = (EditText) findViewById(R.id.edEmail);
         etPassword = (EditText) findViewById(R.id.edPassword);
-
-        recuperar = findViewById(R.id.txtRecuperar);
-        registrar = findViewById(R.id.txtRegistrar);
+        recuperar = (TextView) findViewById(R.id.txtRecuperar);
+        registrar = (TextView) findViewById(R.id.txtRegistrar);
 
         btnLogin = (Button) findViewById(R.id.btnIniciarSesion);
         btnLogin.setOnClickListener((v) -> {
-
             email = etEmail.getText().toString();
             password = etPassword.getText().toString();
-
             if(!email.isEmpty()) {
                 if(!password.isEmpty()){
                     if (email.trim().matches(emailPattern)) {
                         IniciarDialog();
                         loginUsuario();
-
-                        etEmail.setText("");
-                        etPassword.setText("");
-                        etEmail.requestFocus();
-                    } else {
-                        Toast.makeText(getApplicationContext(),"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(),"Ingresar contraseña!!",Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(getApplicationContext(),"Ingresar correo electrónico!!",Toast.LENGTH_SHORT).show();
-            }
+                    } else { Toast.makeText(LoginActivity.this,"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show(); }
+                } else { Toast.makeText(LoginActivity.this,"Ingresar contraseña!!", Toast.LENGTH_SHORT).show(); }
+            } else { Toast.makeText(LoginActivity.this,"Ingresar correo electrónico!!", Toast.LENGTH_SHORT).show(); }
         });
 
         recuperar.setOnClickListener(new View.OnClickListener() {
@@ -91,17 +77,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 try {
                     if(task.isSuccessful()){
-                        progressDialog.dismiss();
-                        PasaporteActivity();
-                        finish();
+                        new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    PasaporteActivity();
+                                    Toast.makeText(LoginActivity.this, "Bienvenido(a)!!", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            }, 2000);
                     } else {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "No se pudo iniciar sesión. Verifique sus credenciales!!", Toast.LENGTH_SHORT).show();
+                        ToastSetTimeOut("No se pudo iniciar sesión. Verifique sus credenciales!!");
+                        etEmail.requestFocus();
                     }
-                } catch (Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
+                } catch (Exception e) { ToastSetTimeOut(e.getLocalizedMessage()); }
             }
         });
     }
@@ -123,8 +112,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private void IniciarDialog(){
         progressDialog = new ProgressDialog(LoginActivity.this, R.style.MyAlertDialogStyle);
-        progressDialog.setMessage("Procesando Información ...");
-        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("Cargando ...");
         progressDialog.show();
+    }
+
+    private void ToastSetTimeOut(String message){
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }, 2000);
     }
 }

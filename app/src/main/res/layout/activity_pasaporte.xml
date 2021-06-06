@@ -132,7 +132,7 @@
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_qr"/>
+            />
 
 
 
