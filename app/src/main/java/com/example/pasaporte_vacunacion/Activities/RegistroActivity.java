@@ -187,6 +187,9 @@ public class RegistroActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     vacuna = vacunaGenerate();
                     dateVaccine = vacunaDateGenerate();
+                    if(vacuna.equals("NO")){
+                        dateVaccine = "- - -";
+                    }
                     hashPassword = BCrypt.withDefaults().hashToString(12,password.toCharArray());
 
                     Map<String, Object> map = new HashMap<>();
@@ -319,10 +322,11 @@ public class RegistroActivity extends AppCompatActivity {
                     "Covaxina - Bharat Biotech",
                     "Covishield - Instituto de suero de la india",
                     "mRNA-1273 - Moderna",
-                    "Sputnik V - Gamaleya"
+                    "Sputnik V - Gamaleya",
+                    "NO"
                 };
         Random rand = new Random();
-        int index = rand.nextInt(7);
+        int index = rand.nextInt(8);
         return vacc [index];
     }
 
