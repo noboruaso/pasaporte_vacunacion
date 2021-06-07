@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Fecha de caducidad:"
+                android:text="Fecha de emisión:"
                 android:textColor="@color/texto"
                 android:textSize="18sp" />
 
@@ -67,25 +67,56 @@
             android:orientation="vertical"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="25dp">
+            android:layout_marginRight="25dp"
+            tools:ignore="ExtraText">
 
             <TextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Sexo:"
+              android:textColor="@color/texto"
+              android:textSize="18sp" />
+          <!--TextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="Fecha de nacimiento:"
+              android:textColor="@color/texto"
+              android:textSize="18sp" />
+
+          <Button
+              android:id="@+id/btnFechaNac"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="ENE 01 2021"
+              android:textColor="@color/texto"
+              style="?android:spinnerStyle"
+              android:backgroundTint="@color/variante"
+              android:onClick="abrirDateNac"/-->
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Fecha de nacimiento:"
-                android:textColor="@color/texto"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnFechaNac"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ENE 01 2021"
-                android:textColor="@color/texto"
-                style="?android:spinnerStyle"
-                android:backgroundTint="@color/variante"
-                android:onClick="abrirDateNac"/>
+                android:orientation="horizontal"
+                android:weightSum="2">
 
+                <RadioButton
+                    android:id="@+id/rbMen"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|start"
+                    android:text="M"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/variante"
+                    android:maxLines="1"/>
+
+                <RadioButton
+                    android:id="@+id/rbWomen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:buttonTint="@color/variante"
+                    android:text="F"/>
+            </RadioGroup>
         </LinearLayout>
 
         <EditText
