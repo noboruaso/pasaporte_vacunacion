@@ -11,10 +11,12 @@
         layout="@layout/toolbar"
         android:id="@+id/tool_bar" />
 
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="300dp"
-        android:layout_height="530dp"
+        android:layout_height="550dp"
         android:background="@drawable/formato_box"
         android:elevation="10dp"
         android:orientation="vertical"

@@ -3,6 +3,7 @@ package com.example.pasaporte_vacunacion.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +38,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class PasaporteActivity extends AppCompatActivity {
     private TextView tvdni,tvfullname,tvvacc,tvdatevacc;
     private String fullname, dni, vacc, datevacc, gender, codeText = "";
+    private Button btnYes, btnNo;
     private androidx.appcompat.widget.Toolbar toolbar;
     private ImageView qrView, fotoUser;
+    private Dialog dialog;
     private DatabaseReference Vaccpass_db;
     private String uid;
     private FirebaseAuth Auth;
@@ -134,9 +140,36 @@ public class PasaporteActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(this, RecuperarActivity.class);
                 startActivity(intent1);
                 return true;
-            case R.id.mCerrar:
-                finish();
+            case R.id.mCerrar:  cerrarSesion(); return true;
             default: return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void cerrarSesion(){
+        dialog = new Dialog(PasaporteActivity.this);
+        dialog.setContentView(R.layout.custom_dialog);
+        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog));
+        dialog.getWindow().setLayout(1000,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+        dialog.setCancelable(false);
+
+        btnNo = dialog.findViewById(R.id.btn_cancel);
+        btnYes = dialog.findViewById(R.id.btn_accept);
+
+        btnNo.setOnClickListener((v) -> {
+            dialog.dismiss();
+        });
+
+        btnYes.setOnClickListener((v) -> {
+            dialog.dismiss();
+            Auth.signOut();
+            LoginActivity();
+            finish();
+        });
+    }
+
+    public void LoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

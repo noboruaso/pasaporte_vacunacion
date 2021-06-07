@@ -4,11 +4,19 @@
         <item name="colorPrimary">@color/design_default_color_primary</item>
         <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
         <item name="colorAccent">@color/design_default_color_error</item>
+        <item name="android:windowAnimationStyle">@style/animation</item>
     </style>
+
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/variante</item>
     </style>
+
     <style name="ToolbarTheme">
         <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>

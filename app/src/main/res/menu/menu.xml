@@ -16,7 +16,7 @@
     <item
         android:title="Cerrar Sesión"
         android:id="@+id/mCerrar"
-        android:icon="@drawable/ic_logout"
+        android:icon="@drawable/ic_signout"
         app:showAsAction="always"
         />
 </menu>
