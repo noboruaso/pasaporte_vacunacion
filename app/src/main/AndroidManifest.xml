@@ -14,24 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pasaporte_Vacunacion"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Activities.MainActivity">
-
-        </activity>
-        <activity android:name=".Activities.PasaporteActivity" />
-        <activity
-            android:name=".Activities.RecuperarActivity"
-            android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
-        <activity
-            android:name=".Activities.RegistroActivity"
-            android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
         <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.RegistroActivity"
+            android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
+        <activity
+            android:name=".Activities.RecuperarActivity"
+            android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
+        <activity android:name=".Activities.Activities.MainActivity">
+        </activity>
+        <activity
+            android:name=".Activities.PasaporteActivity"
+            android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" >
         </activity>
     </application>
 

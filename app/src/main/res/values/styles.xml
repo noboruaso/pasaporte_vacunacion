@@ -8,4 +8,7 @@
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/variante</item>
     </style>
+    <style name="ToolbarTheme">
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
 </resources>

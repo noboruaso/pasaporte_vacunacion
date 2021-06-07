@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.pasaporte_vacunacion.Activities.Activities.MainActivity;
 import com.example.pasaporte_vacunacion.R;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -32,6 +34,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class PasaporteActivity extends AppCompatActivity {
     private TextView tvdni,tvfullname,tvvacc,tvdatevacc;
     private String fullname, dni, vacc, datevacc, gender, codeText = "";
+    private androidx.appcompat.widget.Toolbar toolbar;
     private ImageView qrView, fotoUser;
     private DatabaseReference Vaccpass_db;
     private String uid;
@@ -45,6 +48,10 @@ public class PasaporteActivity extends AppCompatActivity {
         Auth = FirebaseAuth.getInstance();
         uid = Auth.getCurrentUser().getUid();
         Vaccpass_db = FirebaseDatabase.getInstance().getReference();
+
+        toolbar = findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         qrView = (ImageView) findViewById(R.id.imgQR);
         fotoUser = (ImageView) findViewById(R.id.imgFoto);
 
@@ -109,28 +116,27 @@ public class PasaporteActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NotNull MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.mPasaporte:
-
                 return true;
             case R.id.mNoticias:
-                Intent intent1 = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.mContraseña:
-                Intent intent = new Intent(this, RecuperarActivity.class);
+                Intent intent1 = new Intent(this, RecuperarActivity.class);
+                startActivity(intent1);
                 return true;
             case R.id.mCerrar:
                 finish();
-            default:
-                return super.onOptionsItemSelected(item);
+            default: return super.onOptionsItemSelected(item);
         }
     }
 }
