@@ -31,8 +31,8 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class PasaporteActivity extends AppCompatActivity {
     private TextView tvdni,tvfullname,tvvacc,tvdatevacc;
-    private String fullname, dni, vacc, datevacc, codeText = "";
-    private ImageView qrView;
+    private String fullname, dni, vacc, datevacc, gender, codeText = "";
+    private ImageView qrView, fotoUser;
     private DatabaseReference Vaccpass_db;
     private String uid;
     private FirebaseAuth Auth;
@@ -46,6 +46,7 @@ public class PasaporteActivity extends AppCompatActivity {
         uid = Auth.getCurrentUser().getUid();
         Vaccpass_db = FirebaseDatabase.getInstance().getReference();
         qrView = (ImageView) findViewById(R.id.imgQR);
+        fotoUser = (ImageView) findViewById(R.id.imgFoto);
 
         tvfullname = (TextView) findViewById(R.id.txtNomApe);
         tvdni = (TextView) findViewById(R.id.txtDNI);
@@ -57,10 +58,15 @@ public class PasaporteActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
                     if (snapshot.exists()){
+                        gender = snapshot.child("gender").getValue().toString();
                         fullname = snapshot.child("name").getValue().toString();
                         dni = snapshot.child("dni").getValue().toString();
                         vacc = snapshot.child("vaccine").getValue().toString();
                         datevacc = snapshot.child("date_vaccine").getValue().toString();
+
+                        if(gender.equals("Femenino")){
+                            fotoUser.setImageResource(R.mipmap.ic_woman);
+                        } else { fotoUser.setImageResource(R.mipmap.ic_man); }
 
                         tvfullname.setText(fullname);
                         tvdni.setText(dni);
