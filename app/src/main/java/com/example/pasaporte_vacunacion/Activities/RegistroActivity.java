@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -29,12 +30,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -50,6 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
     private String dni, vacuna, dateBirth, genero, dateExpiration, dateVaccine, email, password, hashPassword, repass = "";
     private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private String fullName = "Persona no identificada";
+    private String token = "k4d2956bd531ab61d44f4fa07304b20e13913815";
     FirebaseAuth Auth;
     DatabaseReference Database;
 
@@ -99,6 +106,19 @@ public class RegistroActivity extends AppCompatActivity {
                                             if(!repass.isEmpty()){
                                                 if(password.equals(repass)) {
                                                     if (cbaceptar.isChecked()) {
+
+                                                        /*
+                                                        //CON CABECERA
+                                                        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                                                            @Override
+                                                            public Response intercept(Chain chain) throws IOException {
+                                                                Request newRequest  = chain.request().newBuilder()
+                                                                        .addHeader("WWW-Authenticate", token)
+                                                                        .build();
+                                                                return chain.proceed(newRequest);
+                                                            }
+                                                        }).build(); */
+
                                                         // API DE CONSULTAS DE DNI SOLO PERMITE 50 SOLICITUDES X DÍA
                                                         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://dni.optimizeperu.com/")
                                                                 .addConverterFactory(GsonConverterFactory.create()).build();
@@ -118,8 +138,16 @@ public class RegistroActivity extends AppCompatActivity {
                                                                             Toast.makeText(RegistroActivity.this,"El DNI ingresado no es válido!!", Toast.LENGTH_SHORT).show();
                                                                             etdni.setText("");
                                                                         }
+                                                                    } else {
+                                                                        Toast.makeText(RegistroActivity.this,response.message(), Toast.LENGTH_LONG).show();
+                                                                        Log.d("CODE", String.valueOf(response.code()));
+                                                                        Log.d("NO FUE EXITOSO",response.message());
+                                                                        Log.d("BODY", String.valueOf(response.body()));
+                                                                        Log.d("ERROR BODY", String.valueOf(response.errorBody()));
+                                                                        Log.d("RESPONSE", String.valueOf(response));
                                                                     }
                                                                 } catch (Exception e){
+                                                                    Toast.makeText(RegistroActivity.this,"g", Toast.LENGTH_SHORT).show();
                                                                     Toast.makeText(RegistroActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
