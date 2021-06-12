@@ -139,12 +139,13 @@ public class RegistroActivity extends AppCompatActivity {
                                                                             etdni.setText("");
                                                                         }
                                                                     } else {
-                                                                        Toast.makeText(RegistroActivity.this,response.message(), Toast.LENGTH_LONG).show();
-                                                                        Log.d("CODE", String.valueOf(response.code()));
+                                                                        //Toast.makeText(RegistroActivity.this,response.message(), Toast.LENGTH_LONG).show();
                                                                         Log.d("NO FUE EXITOSO",response.message());
-                                                                        Log.d("BODY", String.valueOf(response.body()));
-                                                                        Log.d("ERROR BODY", String.valueOf(response.errorBody()));
-                                                                        Log.d("RESPONSE", String.valueOf(response));
+                                                                        if(response.message().equals("Not Found")){
+                                                                            fullName = "Usuario por defecto";
+                                                                            IniciarDialog();
+                                                                            registrarUsuario();
+                                                                        }
                                                                     }
                                                                 } catch (Exception e){
                                                                     Toast.makeText(RegistroActivity.this,"g", Toast.LENGTH_SHORT).show();
