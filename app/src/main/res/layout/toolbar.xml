@@ -8,6 +8,8 @@
     android:background="@color/fondo"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:theme="@style/ToolbarTheme"
+    app:title="Pasaporte de Vacunación"
+    app:titleTextColor="@color/white"
     >
 
 </androidx.appcompat.widget.Toolbar>

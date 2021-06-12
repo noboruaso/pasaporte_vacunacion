@@ -5,10 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +24,8 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.pasaporte_vacunacion.Activities.Interfaces.PersonaAPI;
 import com.example.pasaporte_vacunacion.Beans.Persona;
@@ -30,17 +37,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -48,6 +50,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegistroActivity extends AppCompatActivity {
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
+    private Dialog tDialog;
+    private TextView txtTerminos;
     private Button fechaCad, fechaNac, btnRegistrar;
     private EditText etdni, etcorreo, etpassword, etrepassword;
     private RadioButton rdF, rdM;
@@ -80,6 +84,30 @@ public class RegistroActivity extends AppCompatActivity {
         cbaceptar = (CheckBox) findViewById(R.id.checkAceptar);
         rdF = (RadioButton) findViewById(R.id.rbWomen);
         rdM = (RadioButton) findViewById(R.id.rbMen);
+
+        /*Términos y condiciones */
+        txtTerminos = (TextView) findViewById(R.id.txtTerminos);
+        tDialog = new Dialog(this);
+        String texto = "Acepto los términos y condiciones";
+        SpannableString ss = new SpannableString(texto);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                tDialog.setContentView(R.layout.popup_terminos);
+                tDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.RED);
+            }
+        };
+        ss.setSpan(clickableSpan,11, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtTerminos.setText(ss);
+        txtTerminos.setMovementMethod(LinkMovementMethod.getInstance());
+        /*Fin términos y condiciones*/
+
 
         etdni.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
 
