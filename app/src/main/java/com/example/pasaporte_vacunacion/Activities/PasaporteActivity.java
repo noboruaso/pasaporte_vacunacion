@@ -78,8 +78,8 @@ public class PasaporteActivity extends AppCompatActivity {
                         datevacc = snapshot.child("date_vaccine").getValue().toString();
 
                         if(gender.equals("Femenino")){
-                            fotoUser.setImageResource(R.drawable.ic_woman);
-                        } else { fotoUser.setImageResource(R.drawable.ic_man); }
+                            fotoUser.setImageResource(R.mipmap.ic_woman);
+                        } else { fotoUser.setImageResource(R.mipmap.ic_man); }
 
                         tvfullname.setText(fullname);
                         tvdni.setText(dni);
