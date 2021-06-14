@@ -138,9 +138,9 @@ public class PasaporteActivity extends AppCompatActivity {
                 Toast.makeText(PasaporteActivity.this,"Sección de noticias", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.mContraseña:
-                //Intent intent1 = new Intent(this, RecuperarActivity.class);
-                //startActivity(intent1);
-                Toast.makeText(PasaporteActivity.this,"Sección de cambiar de contraseña", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(this, CambiarContActivity.class);
+                startActivity(intent1);
+                //Toast.makeText(PasaporteActivity.this,"Sección de cambiar de contraseña", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.mCerrar:  cerrarSesion(); return true;
             default: return super.onOptionsItemSelected(item);

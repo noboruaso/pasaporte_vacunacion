@@ -11,8 +11,6 @@
         layout="@layout/toolbar"
         android:id="@+id/tool_bar" />
 
-
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="300dp"
