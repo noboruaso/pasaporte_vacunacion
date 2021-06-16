@@ -1,7 +1,20 @@
 package com.example.pasaporte_vacunacion.Beans;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Persona {
     private String dni, name, first_name, last_name, cui;
+
+    @SerializedName("data")
+    private final Data data;
+
+    public Persona(Data data) {
+        this.data = data;
+    }
+
+    public Data getData() {
+        return data;
+    }
 
     public String getDni() {
         return dni;

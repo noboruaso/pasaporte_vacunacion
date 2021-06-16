@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface PersonaAPI {
-    @GET("api/persons/{dni}")
+    @GET("api/dni/{dni}")
     public Call<Persona> find(@Path("dni") String dni);
 }

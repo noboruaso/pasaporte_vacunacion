@@ -56,6 +56,8 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText etdni, etcorreo, etpassword, etrepassword;
     private RadioButton rdF, rdM;
     private CheckBox cbaceptar;
+    private String BASE_URL = "https://consulta.api-peru.com/";
+    private String BASE_URL_2 = "https://dni.optimizeperu.com/";
     private ProgressDialog progressDialog;
     private String dni, vacuna, dateBirth, genero, dateExpiration, dateVaccine, email, password, hashPassword, repass = "";
     private String emailPattern =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -134,57 +136,7 @@ public class RegistroActivity extends AppCompatActivity {
                                             if(!repass.isEmpty()){
                                                 if(password.equals(repass)) {
                                                     if (cbaceptar.isChecked()) {
-
-                                                        /*
-                                                        //CON CABECERA
-                                                        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-                                                            @Override
-                                                            public Response intercept(Chain chain) throws IOException {
-                                                                Request newRequest  = chain.request().newBuilder()
-                                                                        .addHeader("WWW-Authenticate", token)
-                                                                        .build();
-                                                                return chain.proceed(newRequest);
-                                                            }
-                                                        }).build(); */
-
-                                                        // API DE CONSULTAS DE DNI SOLO PERMITE 50 SOLICITUDES X DÍA
-                                                        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://dni.optimizeperu.com/")
-                                                                .addConverterFactory(GsonConverterFactory.create()).build();
-                                                        PersonaAPI personaAPI = retrofit.create(PersonaAPI.class);
-                                                        Call<Persona> call = personaAPI.find(etdni.getText().toString());
-                                                        call.enqueue(new Callback<Persona>() {
-                                                            @Override
-                                                            public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
-                                                                try {
-                                                                    if(response.isSuccessful()){
-                                                                        Persona p = response.body();
-                                                                        if(dni.equals(p.getDni())){
-                                                                            fullName = p.getName() + " " + p.getFirst_name() + " "+p.getLast_name();
-                                                                            IniciarDialog();
-                                                                            registrarUsuario();
-                                                                        } else {
-                                                                            Toast.makeText(RegistroActivity.this,"El DNI ingresado no es válido!!", Toast.LENGTH_SHORT).show();
-                                                                            etdni.setText("");
-                                                                        }
-                                                                    } else {
-                                                                        //Toast.makeText(RegistroActivity.this,response.message(), Toast.LENGTH_LONG).show();
-                                                                        Log.d("NO FUE EXITOSO",response.message());
-                                                                        if(response.message().equals("Not Found")){
-                                                                            fullName = "Usuario por defecto";
-                                                                            IniciarDialog();
-                                                                            registrarUsuario();
-                                                                        }
-                                                                    }
-                                                                } catch (Exception e){
-                                                                    Toast.makeText(RegistroActivity.this,"g", Toast.LENGTH_SHORT).show();
-                                                                    Toast.makeText(RegistroActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            }
-                                                            @Override
-                                                            public void onFailure(Call<Persona> call, Throwable t) {
-                                                                Toast.makeText(RegistroActivity.this, "Ups! Error de conexión.", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });
+                                                        ValidarDni();
                                                     } else {
                                                         Toast.makeText(RegistroActivity.this, "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
                                                     }
@@ -217,6 +169,37 @@ public class RegistroActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(RegistroActivity.this, "Debe completar el campo de dni!!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void ValidarDni(){
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create()).build();
+        PersonaAPI personaAPI = retrofit.create(PersonaAPI.class);
+        Call<Persona> call = personaAPI.find(dni);
+        call.enqueue(new Callback<Persona>() {
+            @Override
+            public void onResponse(Call<Persona> call, retrofit2.Response<Persona> response) {
+                if(response.isSuccessful()){
+                    try {
+                        Persona p = response.body();
+                        if(dni.equals(p.getData().getNumero())){
+                            fullName = p.getData().getNombre_completo();
+                        } else {
+                            fullName = "Usuario por defecto";
+                        }
+                        IniciarDialog();
+                        registrarUsuario();
+                    } catch (Exception e){
+                        Toast.makeText(RegistroActivity.this,"DNI no existe o consulta directa no disponible", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Persona> call, Throwable t) {
+                Toast.makeText(RegistroActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
