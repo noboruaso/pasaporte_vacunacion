@@ -19,6 +19,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -97,6 +98,9 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View widget) {
                 tDialog.setContentView(R.layout.popup_terminos);
                 tDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                tDialog.getWindow().setLayout(1400, ViewGroup.LayoutParams.WRAP_CONTENT);
+                tDialog.show();
+                //tDialog.setCancelable(true);
             }
 
             @Override

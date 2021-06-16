@@ -1,98 +1,146 @@
 <resources>
     <string name="app_name">Pasaporte de Vacunación</string>
-    <string name="terminos">1. Datos de identificación
-
-Usted está visitando el portal www.empleosperu.gob.pe (en adelante, el “sitio web y/o la aplicación”), de titularidad del Ministerio de Trabajo y Promoción del Empleo (en adelante, el MTPE), domiciliado en Av. General Salaverry N° 655, Jesús María, provincia y departamento de Lima.
-
-2. Acceso y aceptación del Usuario
-
-Estos términos y condiciones regulan el acceso y utilización por parte del usuario de los servicios y facilidades que ofrece el sitio web y/o la aplicación. La condición de “usuario” es adquirida al iniciar la navegación y/o utilización del sitio web o la aplicación. El usuario puede acceder y navegar por el sitio web libremente sin necesidad de registrarse y/o suscribirse. Sin embargo, en los casos en que requiera que se le brinde algún servicio, se requerirá del registro y/o suscripción para que pueda tener acceso a los servicios ofrecidos por el MTPE. Asimismo, el acceso y navegación por el sitio seb y/o la aplicación por parte del usuario implican la aceptación sin reservas de todas las disposiciones incluidas en los presentes términos y condiciones. Queda prohibida la utilización de los servicios ofrecidos a través del sitio web y/o aplicación por personas que carezcan de capacidad legal para contratar o menores de edad según la legislación vigente. En caso que ello ocurra, los menores de edad o quienes carezcan de capacidad, deben obtener previamente permiso de sus padres, tutores o representantes legales, según corresponda, quienes serán considerados responsables de todos los actos realizados por las personas a su cargo.
-
-3. Modificación de los Términos y Condiciones
-
-Cualquier modificación, actualización o ampliación producida en los presentes términos y condiciones será inmediatamente publicada, siendo responsabilidad del usuario revisar los términos y condiciones vigentes al momento de la navegación. En caso de que el usuario no estuviera de acuerdo con las modificaciones mencionadas, podrá optar por no hacer uso de los servicios ofrecidos por el MTPE a través del sitio web y/o la aplicación.
-
-4. Servicios ofrecidos por el sitio web o la aplicación
-
-El sitio web y/o la aplicación ofrece una plataforma tecnológica de información al servicio de la población, para ayudar al ciudadano a realizar una búsqueda de empleo rápida, eficiente y gratuita. Para acceso los servicios ofrecidos por el sitio web y/o aplicación se requerirá del registro y/o suscripción de acuerdo con el apartado 6 del presente documento. El MTPE podrá modificar en cualquier momento y sin aviso previo, el diseño, presentación y/o configuración del sitio web, así como cualquiera de los servicios existentes.
-
-Bolsa de Trabajo
-
-El servicio de Bolsa de Trabajo permite realizar intermediación laboral entre la oferta (buscadores de empleo) y la demanda laboral (empleadores), a través del recojo de información de las partes interesadas, de tal manera que los primeros encuentren un puesto de trabajo y los segundos cubran sus vacantes. La información proporcionada por los buscadores de empleo y empleadores tiene carácter de declaración jurada y puede ser materia de verificación posterior. La información registrada por los empleadores sobre las vacantes ofertadas debe encontrarse acorde al marco legal vigente y no suponer la afectación de los derechos de las personas. En ambos casos, los usuarios del sitio web y/o aplicación son responsables de la información que brinden conforme a lo señalado en el apartado 10 del presente documento. El acceso al servicio de Bolsa de Trabajo, disponible en el sitio web y/o aplicativo, no asegura la colocación del buscador de empleo en una plaza vacante ofertada por un empleador. En esa medida, El MTPE no es responsable de los resultados del proceso de selección por parte de los empleadores, sin perjuicio de las acciones de seguimiento que le correspondan, de acuerdo a la normativa vigente sobre la materia; correspondiendo exclusivamente a los “empleadores” ejecutar las acciones relacionadas con la colocación de una vacante.
-
-Certificado Único Laboral
-
-Este servicio comprende el Certificado Único Laboral para Jóvenes–CERTIJOVEN, dirigido a personas entre 18 y 29 años de edad; y el Certificado Único Laboral para personas adultas - CERTIADULTO, disponible para personas mayores de 30 años a más. El Certificado Único Laboral para Jóvenes y para Adultos es un documento que integra información a cargo del Estado que es relevante para la contratación laboral. Se emite gratuitamente. La información presentada en este documento corresponde a la información disponible en la Plataforma de Interoperabilidad del Estado (PIDE), espacio en el cual las entidades del sector público comparten información de sus registros administrativos y bases de datos correspondientes.
-
-La actualización de la información presentada es responsabilidad de cada una de las entidades competentes. En esa medida el MTPE no garantiza su disponibilidad ni se hace responsable por la falta de esta. El certificado es una copia auténtica imprimible de un documento electrónico con validez de tres (03) meses, el cual es archivado por el MTPE aplicando lo dispuesto por el artículo 25 del Reglamento de la Ley de Transparencia y Acceso a la Información Pública, aprobado por decreto supremo n.º 072-2003-PCM y sus modificatorias; y la Tercera Disposición Complementaria Final del Decreto Supremo N° 026-2016-PCM. El empleador puede verificar la autenticidad del Certificado Único Laboral entregado por el postulante, mediante consulta en el portal del sitio web y/o la aplicación, sin opción a descargar el mismo; ingresando el DNI del titular del certificado y el código del documento. El Certificado Único Laboral contiene la siguiente información: a. Datos de identidad (brindados por RENIEC): Nombre completo Fecha de nacimiento Domicilio Número del Documento Nacional de Identidad (DNI) b. Datos de la conducta: Si registra o no antecedentes policiales (brindados por la PNP). Si registra o no antecedentes penales (brindados por el Poder Judicial). Si registra o no antecedentes judiciales (brindados por el INPE). c. Trayectoria educativa: Grados y/o títulos en formación universitaria (brindados por la SUNEDU). Grados y/o títulos en educación superior pedagógica, tecnológica y artística (brindados por MINEDU y SUNEDU, cuando corresponda). Títulos en educación técnico - productiva (brindado por MINEDU). Nivel alcanzado en educación básica (brindado por MINEDU). La información sobre la trayectoria educativa dependerá de su disponibilidad en los registros sistematizados y/o bases de datos de MINEDU y/o SUNEDU:
-
-    Educación básica regular: Información disponible desde 2011 (Solo Certijoven).
-    Educación básica especial: Información disponible desde 2016 (Solo Certijoven).
-    Educación básica alternativa: Información no disponible.
-    Educación técnico productiva: Información no disponible.
-    Educación superior pedagógica: tecnológica y artística.
-    Educación superior pedagógica: Información disponible desde 2016.
-    Educación superior tecnológica: Información disponible desde 2016.
-    Educación superior artística: Información disponible desde 2017.
-    Educación universitaria: Información disponible.
-
-Trayectoria laboral formal (brindada por el MTPE): Nombre de la/s entidad/es con la/s cual/es tuvo vínculo laboral. Periodo en que laboró.La información sobre la trayectoria laboral formal dependerá de su disponibilidad en la base de datos de la Planilla Electrónica del MTPE, la cual contiene información a partir de de agosto de 2012.
-
-5. Uso del sitio web o la aplicación
-
-El usuario se compromete a utilizar el sitio web o la aplicación de conformidad con la Ley, los presentes términos y condiciones y el orden público. En este sentido, la utilización por parte del usuario del sitio web o la aplicación se realizará de conformidad con las siguientes directivas: El usuario se obliga a no utilizar el sitio web o la aplicación con fines o efectos ilícitos o contrarios al contenido de los presentes términos y condiciones, y al marco normativo vigente, lesivos de los intereses o derechos de terceros, o que de cualquier forma pueda dañar, inutilizar, deteriorar la plataforma o impedir un normal disfrute del sitio web o la aplicación por otros usuarios. El usuario se compromete expresamente a no destruir, alterar, inutilizar o, de cualquier otra forma, dañar los datos, programas o documentos electrónicos y demás que se encuentren en el sitio Web o la aplicación. El usuario se compromete a no obstaculizar el acceso a otros usuarios mediante el consumo masivo de los recursos informáticos, a través de los cuales el MTPE presta servicio, así como a no realizar acciones que dañen, interrumpan o generen errores en dichos sistemas o servicios. El usuario se compromete a no intentar penetrar o probar la vulnerabilidad de un sistema o de una red propia del sitio web o la aplicación, así como quebrantar las medidas de seguridad o de autenticación del mismo. El usuario se compromete a hacer un uso adecuado de los contenidos que se ofrecen en el sitio web o la aplicación y a no emplearlos para incurrir en actividades ilícitas, así como a no publicar ningún tipo de contenido ilícito. El usuario se compromete a no utilizar el sitio web o la aplicación para enviar correos electrónicos masivos (spam) o correos electrónicos con contenido amenazante, abusivo, hostil, ultrajante, difamatorio, vulgar, obsceno o injurioso. Asimismo, se compromete a no utilizar un lenguaje ilícito, abusivo, amenazante, obsceno, vulgar, racista, ni cualquier lenguaje que se considere inapropiado, ni anunciar o proporcionar enlaces a sitios que contengan materia ilegal u otro contenido que pueda dañar o deteriorar la red personal o computadora de otro usuario. El MTPE se reserva la potestad de determinar cuándo se produce la vulneración de cualquiera de los preceptos enunciados en el presente apartado por parte de los contenidos publicados por algún usuario, así como la potestad de eliminar dichos contenidos del sitio web o la aplicación. En caso de que un usuario infrinja lo establecido en el presente apartado u otras de las condiciones establecidas en el presente documento, el MTPE procederá a realizar alguna de las siguientes acciones, dependiendo de la gravedad o recurrencia de la infracción: Notificación de cese de conducta al usuario. Suspensión temporal de la cuenta del usuario. Cancelación definitiva de la cuenta del usuario. Sin perjuicio de ello, el MTPE se reserva el derecho de eliminar cualquier contenido de usuario o parte del mismo que infrinja la legislación vigente o cualquier obligación recogida en el presente documento.
-
-6. Registro y responsabilidad por las contraseñas
-
-El usuario podrá navegar por el sitio web o la aplicación sin necesidad de registrarse en una cuenta. Sin embargo, en algunos casos se requerirá del registro y/o suscripción para acceder al sitio web o la aplicación. Para el registro de los usuarios, la plataforma le solicitará información contenida en el Documento Nacional de Identidad con el fin de verificar la identidad de la persona. Asimismo, se le solicitará un número de celular que servirá para activar la cuenta y para identificar el número telefónico desde el cual se realizó la solicitud de registro, ante cualquier eventualidad. Los usuarios registrados y/o suscritos contarán con una clave personal o contraseña con la cual podrán acceder a su cuenta personal. Cada usuario es responsable de su propia contraseña, y deberá mantenerla bajo absoluta reserva y confidencialidad, sin revelarla o compartirla, en ningún caso, con terceros. Cada Usuario es responsable de todas las acciones realizadas mediante el uso de su contraseña. Toda acción realizada a través de la cuenta personal de un usuario se presume realizada por el usuario titular de dicha cuenta. El MTPE no asumirá responsabilidad alguna frente al acceso de información de los usuarios, incluyendo la información confidencial, datos personales o datos sensibles, utilizando la contraseña vigente. En el caso de que un usuario identificara que un tercero conociera y usara su contraseña y su cuenta personal, deberá notificarlo de manera inmediata al MTPE. El MTPE puede solicitar el cambio de un nombre de usuario y contraseña cuando considere que la cuenta ya no es segura, o si se recibe alguna queja o denuncia respecto al nombre de un usuario que viole derechos de terceros.
-
-7. Limitación de responsabilidades e indemnidad
-
-El MTPE no se hace responsable de los posibles daños o perjuicios en el sitio web o la aplicación que se puedan derivar de interferencias, omisiones, interrupciones, virus informáticos, averías o desconexiones en el funcionamiento operativo del sistema electrónico, de retrasos o bloqueos en el uso de este sistema electrónico causados por deficiencias o sobrecargas en el sistema de Internet o en otros sistemas electrónicos, así como también de daños que puedan ser causados por terceras personas mediante intromisiones ilegítimas fuera del control del MTPE.
-
-8. Comunicaciones
-
-De conformidad con lo establecido en el numeral 20.4 del artículo 20 del TUO de la Ley N° 27444, Ley del Procedimiento Administrativo General, el usuario autoriza expresamente al MTPE a realizar las notificaciones por correo electrónico que se consignen en el formulario de registro. El usuario acepta expresamente que la dirección de correo electrónico consignada en el formulario de registro será el medio de contacto oficial entre el sitio web o la aplicación y el usuario, siendo absoluta responsabilidad de este último verificar que dicho correo electrónico esté siempre activo y funcional para poder recibir todas las comunicaciones procedentes del sitio web o la aplicación. Los mensajes o comunicaciones del sitio web o la aplicación a los usuarios solo pueden provenir de las páginas o cuentas oficiales de este en redes sociales u otros medios. En caso se detectará que algún usuario está enviando comunicaciones o realizando publicaciones en nombre del sitio web o la aplicación, el MTPE iniciará las acciones correctivas y legales pertinentes a fin de proteger al resto de usuarios de posibles riesgos de confusión.
-
-9. Exoneración de responsabilidad del MTPE
-
-Al amparo de lo previsto en el segundo párrafo del artículo 104 de la Ley N° 29571, Código de Protección y Defensa del Consumidor, EL MTPE no asume responsabilidad administrativa por cualquier falla, rendimiento o la interrupción en la prestación de los servicios que pueda resultar directa o indirectamente por caso fortuito o fuerza mayor, de hecho determinante de un tercero o de la imprudencia del usuario. Se consideran, a modo de ejemplo, los siguientes actos: Terremotos, maremotos y otros siniestros o desastres naturales. Contaminación por virus informáticos. Fallas en la conexión al sitio web. Interrupción del sitio web, de la red de teleproceso local y/o de la telecomunicación, internet, correo electrónico o acceso a entidades externas necesarias para el uso del sitio web. Actos de vandalismos, terrorismo y conmoción social, así como sus consecuencias. Huelgas y paros que pudiesen repercutir en la prestación del servicio. Actos y consecuencias que no sean previsibles por el MTPE. Mal uso, por parte del usuario, de la información a la que accede por medio del sitio web y/o aplicación. Otros actos que acrediten la existencia de una causa objetiva, justificada y no previsible que configure ruptura del nexo causal por caso fortuito o fuerza mayor, de hecho determinante de un tercero o de la imprudencia del propio usuario afectado. Los usuarios registrados y/o que utilicen los servicios ofrecidos a través del sitio web y/o aplicación, garantizan la veracidad, exactitud, vigencia, exhaustividad y autenticidad de la información brindada. Es responsabilidad del Usuario mantener toda la información brindada a través del sitio web y/o aplicación permanentemente actualizada, de forma que responda, en cada momento, a la situación real del usuario. El usuario será el único responsable de las manifestaciones falsas o inexactas que realice, así como de los daños y perjuicios que cause al MTPE o a terceros. Salvo en aquellos casos expresamente descritos este documento, así como en la legislación vigente, el MTPE no se responsabiliza por los daños y perjuicios de cualquier naturaleza que puedan originarse por la falta de exactitud, exhaustividad, actualización, así como a errores u omisiones de los que pudieran adolecer la información brindada por los usuarios del sitio web y/o aplicación. En esa medida, el usuario se responsabiliza por la veracidad, exactitud, vigencia, exhaustividad y autenticidad de la información que brinden en su condición de buscadores de empleo para efectos de postular a una vacante a través del servicio de Bolsa de Trabajo, disponible en el sitio web y/o aplicativo, o en su condición de empleadores, al realizar su registro y registrar información sobre las vacantes publicadas a través del sitio web y/o aplicativo.
-
-10. Derechos de autor
-
-La titularidad y los derechos de autor del servicio que brinda el MTPE incluyen las imágenes, fotografías, textos, aplicaciones o subprogramas incorporados en el servicio, así como los documentos y manuales del servicio; encontrándose protegidos por el Decreto Legislativo N° 822, Ley sobre el derecho de autor, y disposiciones contenidas en normas internacionales.
-
-11. Política de privacidad y protección de datos personales
-
-11.1 Identidad
-
-La presente cláusula tiene por finalidad informar a los usuarios la manera en que el MTPE trata la información y datos personales de los usuarios en la plataforma web: www.empleosperú.gob.pe, que hacen uso de los servicios descritos en el punto 4 del presente documento. Esta política se encuentra adecuada a la normativa vigente de la Ley de Protección de Datos Personales (Ley N° 29733 y su Reglamento aprobado mediante Decreto Supremo N° 003-2013-JUS). En la presente cláusula, se señalan las finalidades del tratamiento de los datos personales que otorgan los usuarios, quiénes son los encargados de tratarla, de las medidas de seguridad y de los medios para ejercer sus derechos como titular de los datos personales, entre otros aspectos.
-
-11.2 Datos personales recopilados
-
-El MTPE recopila y almacena datos personales por medio del registro que realizan los mismos usuarios, tales como nombres, apellidos, dirección de correo electrónico, número de DNI, entre otros para generación de cuentas y uso de los servicios en www.empleosperú.gob.pe. Asimismo, los certificados generados por el usuario de los servicios en www.empleosperú.gob.pe se almacenarán en una carpeta personal que estará disponible para el acceso de los propios usuarios y que son gestionado por el MTPE. Es importante mencionar que el Certificado Único Laboral, es un documento que integra información disponible en la Plataforma de Interoperabilidad del Estado (PIDE), espacio en el cual las entidades del sector público comparten información de sus registros administrativos y bases de datos correspondientes.
-
-11.3 Finalidad de tratamiento de los datos personales
-
-La Información del Usuario será tratada a fin de: Atender y procesar solicitudes por parte del usuario, brindar soporte al mismo, validar la veracidad de la información proporcionada y atender consultas del usuario. Gestionar y administrar las cuentas que los usuarios mantengan en los sitios web y las aplicaciones, así como supervisar y monitorear el correcto uso de los servicios. Realizar encuestas y/o acciones relacionadas con la mejora de los servicios que se prestan a los usuarios a través de los sitios web y las aplicaciones. Evaluar la prestación de los servicios que se brindan a través de los sitios web y las aplicaciones.
-
-11.4 Transferencia
-
-El Ministerio de Trabajo y Promoción del Empleo se compromete a no transferir o compartir la Información del usuario sin que se haya prestado el debido consentimiento para ello, con excepción de los siguientes casos: Solicitud de información de autoridades públicas en ejercicio de sus funciones y el ámbito de sus competencias. Solicitud de información en virtud de órdenes judiciales. Solicitud de información en virtud de disposiciones legales. Los datos personales tratados por el MTPE para las finalidades definidas en el numeral 11.3 serán almacenados en servidores de Amazon, y una copia de seguridad en los servidores del MTPE. El MTPE garantiza que el tratamiento de sus datos se limite a las finalidades antes autorizadas, que se mantengan de forma confidencial, así como que se implementen las medidas de seguridad que exige la Ley de Protección de Datos personales, su Reglamento y los Lineamientos para Uso de Servicios en la Nube para Entidades de la Administración Pública del Estado Peruano, sobre todo las referidas al flujo transfronterizo de datos personales.
-
-11.5 Consentimiento
-
-El usuario manifiesta expresamente que ha sido debidamente informado de todas las finalidades antes mencionadas. Asimismo, a través de la aceptación de la presente política de privacidad, el usuario autoriza y otorga su consentimiento previo, libre, expreso e inequívoco y gratuito, para el tratamiento de la Información del usuario, de conformidad con las finalidades antes descritas.
-
-11.6 Sobre el ejercicio de derechos como titular de datos personales
-
-Los ciudadanos que hayan facilitado sus datos personales al MTPE pueden ejercer sus derechos de acceso, rectificación, cancelación y oposición, de impedir el suministro de sus datos personales, de oposición al tratamiento o de tratamiento objetivo de los datos, en los términos recogidos en la legislación peruana vigente. Para poder ejercer estos derechos los ciudadanos deberán dirigir la solicitud a la dirección de correo electrónico datos_personalesep@trabajo.gob.pe con el asunto “Protección de Datos Personales”, consignando sus datos, acreditando su identidad y los motivos de su solicitud. Además de los anteriores derechos, el usuario tendrá derecho a retirar el consentimiento otorgado en cualquier momento mediante el procedimiento descrito líneas arriba, sin que el retiro del consentimiento afecte la licitud del tratamiento anterior al retiro de este. De considerar que no ha sido atendido en el ejercicio de sus derechos, puede presentar una reclamación ante la Autoridad Nacional de Protección de Datos Personales dirigiéndose al correo electrónico protegetusdatos@minjus.gob.pe.
-
-11.7 Vigencia y modificación de la política de privacidad y protección de datos personales
-
-El MTPE se reserva el derecho a modificar su política de privacidad en el supuesto de que exista un cambio en la legislación vigente, doctrinal, jurisprudencial. La entidad podrá realizar modificaciones y correcciones a esta política de privacidad. Si se introdujera algún cambio en esta política, el nuevo texto se publicará en el canal digital del servicio digital. Por favor, sírvase verificar regularmente este documento para consultar los cambios que puedan haber existido y de qué manera le pueden afectar.
-
-12. Legislación aplicable
-
-Las Condiciones Generales de Uso y las demás de condiciones legales, así como la política de privacidad y protección de datos personales del sitio web, se rigen en todos y cada uno de sus extremos por la ley peruana. </string>
+    <string name="terminos_title">Términos y Condiciones</string>
+    <string name="terminos">
+        <br/>
+        <h1 style="text-align:center"><b>Términos y Condiciones</b></h1>
+        <br/><br/>
+        <h4>1. Datos de identificación</h4> <br/>
+        <div>
+            <sub>
+                Usted está visitando el portal <a href="www.empleosperu.gob.pe">www.empleosperu.gob.pe</a> (en adelante, el “sitio web y/o la aplicación”), de titularidad del Ministerio de Trabajo y
+                Promoción del Empleo (en adelante, el MTPE), domiciliado en Av. General Salaverry N° 655, Jesús María, provincia y departamento de Lima.
+            </sub>
+        </div>
+        <br/>
+        <h4>2. Acceso y aceptación del Usuario</h4> <br/>
+        <div>
+            <sub>
+                Estos términos y condiciones regulan el acceso y utilización por parte del usuario de los servicios y facilidades que ofrece el sitio web y/o la aplicación. La condición de “usuario”
+                es adquirida al iniciar la navegación y/o utilización del sitio web o la aplicación. El usuario puede acceder y navegar por el sitio web libremente sin necesidad de registrarse y/o
+                suscribirse. Sin embargo, en los casos en que requiera que se le brinde algún servicio, se requerirá del registro y/o suscripción para que pueda tener acceso a los servicios ofrecidos
+                por el MTPE. Asimismo, el acceso y navegación por el sitio seb y/o la aplicación por parte del usuario implican la aceptación sin reservas de todas las disposiciones incluidas en los
+                presentes términos y condiciones. Queda prohibida la utilización de los servicios ofrecidos a través del sitio web y/o aplicación por personas que carezcan de capacidad legal para
+                contratar o menores de edad según la legislación vigente. En caso que ello ocurra, los menores de edad o quienes carezcan de capacidad, deben obtener previamente permiso de sus padres,
+                tutores o representantes legales, según corresponda, quienes serán considerados responsables de todos los actos realizados por las personas a su cargo.
+            </sub>
+        </div><br/>
+        <h4>3. Modificación de los Términos y Condiciones</h4> <br/>
+        <div>
+            <sub>
+                Cualquier modificación, actualización o ampliación producida en los presentes términos y condiciones será inmediatamente publicada, siendo responsabilidad del usuario revisar los
+                términos y condiciones vigentes al momento de la navegación. En caso de que el usuario no estuviera de acuerdo con las modificaciones mencionadas, podrá optar por no hacer uso de
+                los servicios ofrecidos por el MTPE a través del sitio web y/o la aplicación.
+            </sub>
+        </div><br/>
+        <h4>4. Servicios ofrecidos por el sitio web o la aplicación</h4> <br/>
+        <div>
+            <sub>
+                El sitio web y/o la aplicación ofrece una plataforma tecnológica de información al servicio de la población, para ayudar al ciudadano a realizar una búsqueda de empleo rápida,
+                eficiente y gratuita. Para acceso los servicios ofrecidos por el sitio web y/o aplicación se requerirá del registro y/o suscripción de acuerdo con el apartado 6 del presente documento.
+                El MTPE podrá modificar en cualquier momento y sin aviso previo, el diseño, presentación y/o configuración del sitio web, así como cualquiera de los servicios existentes.
+            </sub>
+        </div><br/>
+        <h4>5. Uso del sitio web o la aplicación</h4> <br/>
+        <div>
+            <sub>
+                El usuario se compromete a utilizar el sitio web o la aplicación de conformidad con la Ley, los presentes términos y condiciones y el orden público. En este sentido, la utilización
+                por parte del usuario del sitio web o la aplicación se realizará de conformidad con las siguientes directivas: El usuario se obliga a no utilizar el sitio web o la aplicación con
+                fines o efectos ilícitos o contrarios al contenido de los presentes términos y condiciones, y al marco normativo vigente, lesivos de los intereses o derechos de terceros, o que de
+                cualquier forma pueda dañar, inutilizar, deteriorar la plataforma o impedir un normal disfrute del sitio web o la aplicación por otros usuarios. El usuario se compromete expresamente
+                a no destruir, alterar, inutilizar o, de cualquier otra forma, dañar los datos, programas o documentos electrónicos y demás que se encuentren en el sitio Web o la aplicación. El
+                usuario se compromete a no obstaculizar el acceso a otros usuarios mediante el consumo masivo de los recursos informáticos, a través de los cuales el MTPE presta servicio, así como
+                a no realizar acciones que dañen, interrumpan o generen errores en dichos sistemas o servicios. El usuario se compromete a no intentar penetrar o probar la vulnerabilidad de un sistema
+                o de una red propia del sitio web o la aplicación, así como quebrantar las medidas de seguridad o de autenticación del mismo. El usuario se compromete a hacer un uso adecuado de los
+                contenidos que se ofrecen en el sitio web o la aplicación y a no emplearlos para incurrir en actividades ilícitas, así como a no publicar ningún tipo de contenido ilícito. El usuario
+                se compromete a no utilizar el sitio web o la aplicación para enviar correos electrónicos masivos (spam) o correos electrónicos con contenido amenazante, abusivo, hostil, ultrajante,
+                difamatorio, vulgar, obsceno o injurioso. Asimismo, se compromete a no utilizar un lenguaje ilícito, abusivo, amenazante, obsceno, vulgar, racista, ni cualquier lenguaje que se considere
+                inapropiado, ni anunciar o proporcionar enlaces a sitios que contengan materia ilegal u otro contenido que pueda dañar o deteriorar la red personal o computadora de otro usuario. El MTPE
+                se reserva la potestad de determinar cuándo se produce la vulneración de cualquiera de los preceptos enunciados en el presente apartado por parte de los contenidos publicados por
+                algún usuario, así como la potestad de eliminar dichos contenidos del sitio web o la aplicación. En caso de que un usuario infrinja lo establecido en el presente apartado u otras de las
+                condiciones establecidas en el presente documento, el MTPE procederá a realizar alguna de las siguientes acciones, dependiendo de la gravedad o recurrencia de la infracción: Notificación
+                de cese de conducta al usuario. Suspensión temporal de la cuenta del usuario. Cancelación definitiva de la cuenta del usuario. Sin perjuicio de ello, el MTPE se reserva el derecho de
+                eliminar cualquier contenido de usuario o parte del mismo que infrinja la legislación vigente o cualquier obligación recogida en el presente documento.
+            </sub>
+        </div><br/>
+        <h4>6. Registro y responsabilidad por las contraseñas</h4> <br/>
+        <div>
+            <sub>
+                El usuario podrá navegar por el sitio web o la aplicación sin necesidad de registrarse en una cuenta. Sin embargo, en algunos casos se requerirá del registro y/o suscripción para
+                acceder al sitio web o la aplicación. Para el registro de los usuarios, la plataforma le solicitará información contenida en el Documento Nacional de Identidad con el fin de verificar
+                la identidad de la persona. Asimismo, se le solicitará un número de celular que servirá para activar la cuenta y para identificar el número telefónico desde el cual se realizó la
+                solicitud de registro, ante cualquier eventualidad. Los usuarios registrados y/o suscritos contarán con una clave personal o contraseña con la cual podrán acceder a su cuenta personal.
+                Cada usuario es responsable de su propia contraseña, y deberá mantenerla bajo absoluta reserva y confidencialidad, sin revelarla o compartirla, en ningún caso, con terceros.
+                Cada Usuario es responsable de todas las acciones realizadas mediante el uso de su contraseña. Toda acción realizada a través de la cuenta personal de un usuario se presume realizada
+                por el usuario titular de dicha cuenta. El MTPE no asumirá responsabilidad alguna frente al acceso de información de los usuarios, incluyendo la información confidencial, datos
+                personales o datos sensibles, utilizando la contraseña vigente. En el caso de que un usuario identificara que un tercero conociera y usara su contraseña y su cuenta personal, deberá
+                notificarlo de manera inmediata al MTPE. El MTPE puede solicitar el cambio de un nombre de usuario y contraseña cuando considere que la cuenta ya no es segura, o si se recibe alguna
+                queja o denuncia respecto al nombre de un usuario que viole derechos de terceros.
+            </sub>
+        </div><br/>
+        <h4>7. Limitación de responsabilidades e indemnidad</h4> <br/>
+        <div>
+            <sub>
+                El MTPE no se hace responsable de los posibles daños o perjuicios en el sitio web o la aplicación que se puedan derivar de interferencias, omisiones, interrupciones, virus informáticos,
+                averías o desconexiones en el funcionamiento operativo del sistema electrónico, de retrasos o bloqueos en el uso de este sistema electrónico causados por deficiencias o sobrecargas en
+                el sistema de Internet o en otros sistemas electrónicos, así como también de daños que puedan ser causados por terceras personas mediante intromisiones ilegítimas fuera del control del MTPE.
+            </sub>
+        </div><br/>
+        <h4>8. Comunicaciones</h4> <br/>
+        <div>
+            <sub>
+                De conformidad con lo establecido en el numeral 20.4 del artículo 20 del TUO de la Ley N° 27444, Ley del Procedimiento Administrativo General, el usuario autoriza expresamente al MTPE a
+                realizar las notificaciones por correo electrónico que se consignen en el formulario de registro. El usuario acepta expresamente que la dirección de correo electrónico consignada en el
+                formulario de registro será el medio de contacto oficial entre el sitio web o la aplicación y el usuario, siendo absoluta responsabilidad de este último verificar que dicho correo
+                electrónico esté siempre activo y funcional para poder recibir todas las comunicaciones procedentes del sitio web o la aplicación. Los mensajes o comunicaciones del sitio web o la
+                aplicación a los usuarios solo pueden provenir de las páginas o cuentas oficiales de este en redes sociales u otros medios. En caso se detectará que algún usuario está enviando comunicaciones
+                o realizando publicaciones en nombre del sitio web o la aplicación, el MTPE iniciará las acciones correctivas y legales pertinentes a fin de proteger al resto de usuarios de posibles riesgos
+                de confusión.
+           </sub>
+        </div><br/>
+        <h4>9. Exoneración de responsabilidad del MTPE</h4> <br/>
+        <div>
+            <sub>
+                Al amparo de lo previsto en el segundo párrafo del artículo 104 de la Ley N° 29571, Código de Protección y Defensa del Consumidor, EL MTPE no asume responsabilidad administrativa por
+                cualquier falla, rendimiento o la interrupción en la prestación de los servicios que pueda resultar directa o indirectamente por caso fortuito o fuerza mayor, de hecho determinante
+                de un tercero o de la imprudencia del usuario. Se consideran, a modo de ejemplo, los siguientes actos: Terremotos, maremotos y otros siniestros o desastres naturales. Contaminación por
+                virus informáticos. Fallas en la conexión al sitio web. Interrupción del sitio web, de la red de teleproceso local y/o de la telecomunicación, internet, correo electrónico o acceso a
+                entidades externas necesarias para el uso del sitio web. Actos de vandalismos, terrorismo y conmoción social, así como sus consecuencias. Huelgas y paros que pudiesen repercutir en la
+                prestación del servicio. Actos y consecuencias que no sean previsibles por el MTPE. Mal uso, por parte del usuario, de la información a la que accede por medio del sitio web y/o aplicación.
+                Otros actos que acrediten la existencia de una causa objetiva, justificada y no previsible que configure ruptura del nexo causal por caso fortuito o fuerza mayor, de hecho determinante de
+                un tercero o de la imprudencia del propio usuario afectado. Los usuarios registrados y/o que utilicen los servicios ofrecidos a través del sitio web y/o aplicación, garantizan la veracidad,
+                exactitud, vigencia, exhaustividad y autenticidad de la información brindada. Es responsabilidad del Usuario mantener toda la información brindada a través del sitio web y/o aplicación
+                permanentemente actualizada, de forma que responda, en cada momento, a la situación real del usuario. El usuario será el único responsable de las manifestaciones falsas o inexactas que
+                realice, así como de los daños y perjuicios que cause al MTPE o a terceros. Salvo en aquellos casos expresamente descritos este documento, así como en la legislación vigente, el MTPE no
+                se responsabiliza por los daños y perjuicios de cualquier naturaleza que puedan originarse por la falta de exactitud, exhaustividad, actualización, así como a errores u omisiones de los
+                que pudieran adolecer la información brindada por los usuarios del sitio web y/o aplicación. En esa medida, el usuario se responsabiliza por la veracidad, exactitud, vigencia, exhaustividad
+                y autenticidad de la información que brinden en su condición de buscadores de empleo para efectos de postular a una vacante a través del servicio de Bolsa de Trabajo, disponible en el sitio
+                web y/o aplicativo, o en su condición de empleadores, al realizar su registro y registrar información sobre las vacantes publicadas a través del sitio web y/o aplicativo.
+            </sub>
+        </div><br/>
+        <h4>10. Derechos de autor</h4> <br/>
+        <div>
+            <sub>
+                La titularidad y los derechos de autor del servicio que brinda el MTPE incluyen las imágenes, fotografías, textos, aplicaciones o subprogramas incorporados en el servicio, así como los
+                documentos y manuales del servicio; encontrándose protegidos por el Decreto Legislativo N° 822, Ley sobre el derecho de autor, y disposiciones contenidas en normas internacionales.
+            </sub>
+        </div><br/>
+        <h4>11. Política de privacidad y protección de datos personales</h4> <br/>
+        <div>
+            <sub>
+                La presente cláusula tiene por finalidad informar a los usuarios la manera en que el MTPE trata la información y datos personales de los usuarios en la plataforma
+                web: <a href="www.empleosperú.gob.pe">www.empleosperú.gob.pe</a>, que hacen uso de los servicios descritos en el punto 4 del presente documento. Esta política se encuentra adecuada
+                a la normativa vigente de la Ley de Protección de Datos Personales (Ley N° 29733 y su Reglamento aprobado mediante Decreto Supremo N° 003-2013-JUS). En la presente cláusula, se
+                señalan las finalidades del tratamiento de los datos personales que otorgan los usuarios, quiénes son los encargados de tratarla, de las medidas de seguridad y de los medios para
+                ejercer sus derechos como titular de los datos personales, entre otros aspectos.
+           </sub>
+        </div><br/>
+        <h4>12. Legislación aplicable</h4> <br/>
+        <div>
+            <sub>
+                Las Condiciones Generales de Uso y las demás de condiciones legales, así como la política de privacidad y protección de datos personales del sitio web, se rigen en todos y cada
+                uno de sus extremos por la ley peruana.
+            </sub>
+        </div>
+    </string>
 </resources>
