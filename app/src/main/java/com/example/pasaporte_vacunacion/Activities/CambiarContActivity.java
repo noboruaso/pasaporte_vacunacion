@@ -122,9 +122,8 @@ public class CambiarContActivity extends AppCompatActivity {
                 startActivity(intent1);
                 return true;
             case R.id.mNoticias:
-                //Intent intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
-                Toast.makeText(CambiarContActivity.this,"Sección de noticias", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, NewsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.mContraseña:
                 return true;

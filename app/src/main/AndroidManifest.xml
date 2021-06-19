@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pasaporte_Vacunacion"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.CambiarContActivity"></activity>
         <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar">
@@ -24,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.CambiarContActivity" />
         <activity
             android:name=".Activities.RegistroActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
@@ -31,8 +31,10 @@
             android:name=".Activities.RecuperarActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
         <activity
-            android:name=".Activities.Activities.MainActivity"
+            android:name=".Activities.NewsActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
+        <activity android:name=".Activities.NewsDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.PasaporteActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />

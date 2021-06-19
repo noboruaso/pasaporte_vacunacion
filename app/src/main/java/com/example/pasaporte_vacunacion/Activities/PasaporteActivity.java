@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.pasaporte_vacunacion.Activities.Activities.MainActivity;
 import com.example.pasaporte_vacunacion.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -39,9 +38,9 @@ public class PasaporteActivity extends AppCompatActivity {
     private TextView tvdni,tvfullname,tvvacc,tvdatevacc;
     private String fullname, dni, vacc, datevacc, gender, codeText = "";
     private Button btnYes, btnNo;
+    private Dialog dialog;
     private androidx.appcompat.widget.Toolbar toolbar;
     private ImageView qrView, fotoUser;
-    private Dialog dialog;
     private DatabaseReference Vaccpass_db;
     private String uid;
     private FirebaseAuth Auth;
@@ -128,19 +127,16 @@ public class PasaporteActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.mPasaporte:
                 return true;
             case R.id.mNoticias:
-                //Intent intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
-                Toast.makeText(PasaporteActivity.this,"Sección de noticias", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, NewsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.mContraseña:
                 Intent intent1 = new Intent(this, CambiarContActivity.class);
                 startActivity(intent1);
-                //Toast.makeText(PasaporteActivity.this,"Sección de cambiar de contraseña", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.mCerrar:  cerrarSesion(); return true;
             default: return super.onOptionsItemSelected(item);
