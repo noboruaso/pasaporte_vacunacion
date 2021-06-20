@@ -20,11 +20,14 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +52,9 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegistroActivity extends AppCompatActivity {
+public class RegistroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private Spinner spinner;
+    int posVaccine;
     private DatePickerDialog CadPickerDialog, NacPickerDialog;
     private Dialog tDialog;
     private TextView txtTerminos;
@@ -79,6 +84,12 @@ public class RegistroActivity extends AppCompatActivity {
         initDateNac();
         fechaCad = findViewById(R.id.btnFechaCad);
         //fechaNac = findViewById(R.id.btnFechaNac);
+
+        spinner = (Spinner) findViewById(R.id.vaccineSpin);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.typeVaccine, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         etdni = (EditText) findViewById(R.id.edDNI);
         etcorreo = (EditText) findViewById(R.id.edCorreo);
@@ -132,39 +143,43 @@ public class RegistroActivity extends AppCompatActivity {
 
                 if(!dni.isEmpty()){
                     if(dni.length() >= 8){
-                        if(rdF.isChecked() || rdM.isChecked()){
-                            if(!email.isEmpty()){
-                                if(email.trim().matches(emailPattern)) {
-                                    if(!password.isEmpty()){
-                                        if(password.length() >= 6) {
-                                            if(!repass.isEmpty()){
-                                                if(password.equals(repass)) {
-                                                    if (cbaceptar.isChecked()) {
-                                                        ValidarDni();
-                                                    } else {
-                                                        Toast.makeText(RegistroActivity.this, "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                        if(posVaccine >= 1 ){
+                            if(rdF.isChecked() || rdM.isChecked()){
+                                if(!email.isEmpty()){
+                                    if(email.trim().matches(emailPattern)) {
+                                        if(!password.isEmpty()){
+                                            if(password.length() >= 6) {
+                                                if(!repass.isEmpty()){
+                                                    if(password.equals(repass)) {
+                                                        if (cbaceptar.isChecked()) {
+                                                            ValidarDni();
+                                                        } else {
+                                                            Toast.makeText(RegistroActivity.this, "Debe aceptar los términos y condiciones para registrarse!!", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else{
+                                                        Toast.makeText(RegistroActivity.this,"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
+                                                        etrepassword.setText("");
                                                     }
-                                                } else{
-                                                    Toast.makeText(RegistroActivity.this,"Las contraseñas no coinciden!!", Toast.LENGTH_SHORT).show();
-                                                    etrepassword.setText("");
+                                                } else {
+                                                    Toast.makeText(RegistroActivity.this,"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
                                                 }
                                             } else {
-                                                Toast.makeText(RegistroActivity.this,"Debe completar el campo de confirmación de contraseña!!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(RegistroActivity.this,"La contraseña debe tener mínimo 6 caracteres!!", Toast.LENGTH_SHORT).show();
                                             }
                                         } else {
-                                            Toast.makeText(RegistroActivity.this,"La contraseña debe tener mínimo 6 caracteres!!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegistroActivity.this,"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        Toast.makeText(RegistroActivity.this,"Debe completar el campo de contraseña!!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegistroActivity.this,"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(RegistroActivity.this,"Correo electrónico inválido!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistroActivity.this,"Debe completar el campo de correo electrónico!!", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                Toast.makeText(RegistroActivity.this,"Debe completar el campo de correo electrónico!!", Toast.LENGTH_SHORT).show();
+                            }  else {
+                                Toast.makeText(RegistroActivity.this,"Debe seleccionar su sexo!!", Toast.LENGTH_SHORT).show();
                             }
-                        }  else {
-                            Toast.makeText(RegistroActivity.this,"Debe seleccionar su sexo!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegistroActivity.this,"Debe seleccionar una vacuna!!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(RegistroActivity.this,"El dni requiere de 8 digitos!!", Toast.LENGTH_SHORT).show();
@@ -229,8 +244,8 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    vacuna = vacunaGenerate();
-                    dateVaccine = vacunaDateGenerate();
+                    //vacuna = vacunaGenerate();
+                    dateVaccine = dateExpiration;
                     if(vacuna.equals("NO")){
                         dateVaccine = "- - -";
                     }
@@ -244,7 +259,7 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("vaccine",vacuna);
                     map.put("gender", genero);
                     //map.put("date_birth",dateBirth);
-                    map.put("date_issue",dateExpiration);
+                    //map.put("date_issue",dateExpiration);
                     map.put("date_vaccine",dateVaccine);
 
                     String id = Auth.getCurrentUser().getUid();
@@ -387,5 +402,22 @@ public class RegistroActivity extends AppCompatActivity {
         if(año[iAño] == 2020){  mes = mesA[iMes];
         } else { mes = mesB[iMes]; }
         return mes + " " + dia + " " + año[iAño];
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        vacuna = parent.getItemAtPosition(position).toString();
+        posVaccine = position;
+
+        if(posVaccine == 8) {
+            fechaCad.setEnabled(false);
+        } else {
+            fechaCad.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

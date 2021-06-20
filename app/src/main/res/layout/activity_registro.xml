@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="300dp"
-        android:layout_height="550dp"
+        android:layout_height="600dp"
         android:background="@drawable/formato_box"
         android:elevation="10dp"
         android:orientation="vertical"
@@ -40,10 +40,26 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp">
 
+            <Spinner
+                android:id="@+id/vaccineSpin"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Fecha de emisión:"
+                android:text="Fecha de Vacunación:"
                 android:textColor="@color/texto"
                 android:textSize="18sp" />
 

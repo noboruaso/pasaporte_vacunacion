@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Pasaporte de Vacunación</string>
     <string name="terminos_title">Términos y Condiciones</string>
+    <string-array name="typeVaccine">
+        <item>-- Seleccione --</item>
+        <item>AZD1222 - Oxford/AstraZeneca</item>
+        <item>BBIBP-CorV - Sinopharm</item>
+        <item>BNTI62b2 - BioNTech/Pfizer</item>
+        <item>Covaxina - Bharat Biotech</item>
+        <item>Covishield - Instituto de suero de la india</item>
+        <item>mRNA-1273 - Moderna</item>
+        <item>Sputnik V - Gamaleya</item>
+        <item>NO</item>
+    </string-array>
     <string name="terminos">
         <br/>
         <h1 style="text-align:center"><b>Términos y Condiciones</b></h1>
