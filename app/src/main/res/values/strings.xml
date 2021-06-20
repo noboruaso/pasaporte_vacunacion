@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Pasaporte de Vacunación</string>
     <string name="terminos_title">Términos y Condiciones</string>
     <string-array name="typeVaccine">
@@ -12,4 +12,8 @@
         <item>Sputnik V - Gamaleya</item>
         <item>Sin vacuna</item>
     </string-array>
+
+    <string name="r_bold" tools:ignore="ReferenceType">@font/rubikbold</string>
+    <string name="r_regular" tools:ignore="ReferenceType">@font/rubikregular</string>
+    <string name="r_light" tools:ignore="ReferenceType">@font/rubiklight</string>
 </resources>

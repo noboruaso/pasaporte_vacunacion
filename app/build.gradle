@@ -65,6 +65,9 @@ dependencies {
 
 //Times Formater
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
+
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
 }
 
 

@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pasaporte_Vacunacion"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.TrackActivity"></activity>
         <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar">
@@ -33,7 +34,8 @@
         <activity
             android:name=".Activities.NewsActivity"
             android:theme="@style/Theme.Pasaporte_Vacunacion.NoActionBar" />
-        <activity android:name=".Activities.NewsDetailActivity"
+        <activity
+            android:name=".Activities.NewsDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.PasaporteActivity"
