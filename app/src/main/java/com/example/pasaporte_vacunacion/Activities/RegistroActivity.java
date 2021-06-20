@@ -107,7 +107,7 @@ public class RegistroActivity extends AppCompatActivity implements AdapterView.O
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                tDialog.setContentView(R.layout.popup_terminos);
+                tDialog.setContentView(R.layout.custom_dialog_terminos);
                 tDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 tDialog.getWindow().setLayout(1400, ViewGroup.LayoutParams.WRAP_CONTENT);
                 tDialog.show();
@@ -246,7 +246,7 @@ public class RegistroActivity extends AppCompatActivity implements AdapterView.O
                 if (task.isSuccessful()){
                     //vacuna = vacunaGenerate();
                     dateVaccine = dateExpiration;
-                    if(vacuna.equals("NO")){
+                    if(vacuna.equals("Sin vacuna")){
                         dateVaccine = "- - -";
                     }
                     hashPassword = BCrypt.withDefaults().hashToString(12,password.toCharArray());
@@ -382,7 +382,7 @@ public class RegistroActivity extends AppCompatActivity implements AdapterView.O
                     "Covishield - Instituto de suero de la india",
                     "mRNA-1273 - Moderna",
                     "Sputnik V - Gamaleya",
-                    "NO"
+                    "Sin vacuna"
                 };
         Random rand = new Random();
         int index = rand.nextInt(8);
@@ -411,6 +411,7 @@ public class RegistroActivity extends AppCompatActivity implements AdapterView.O
 
         if(posVaccine == 8) {
             fechaCad.setEnabled(false);
+            fechaCad.setText("- - -");
         } else {
             fechaCad.setEnabled(true);
         }
