@@ -9,9 +9,9 @@
         android:title="Noticias COVID"
         android:id="@+id/mNoticias" />
 
-    <item
+    <!--item
         android:title="Estadísticas COVID"
-        android:id="@+id/mStats" />
+        android:id="@+id/mStats" /-->
 
     <item
         android:title="Cambiar Contraseña"

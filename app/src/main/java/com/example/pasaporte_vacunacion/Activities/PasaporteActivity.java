@@ -134,11 +134,11 @@ public class PasaporteActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, NewsActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.mStats:
+           /* case R.id.mStats:
                 //Intent intent1 = new Intent(this, TrackActivity.class);
                 //startActivity(intent1);
                 Toast.makeText(PasaporteActivity.this, "Estadísticas COVID", Toast.LENGTH_SHORT).show();
-                return true;
+                return true;*/
             case R.id.mContraseña:
                 Intent intent2 = new Intent(this, CambiarContActivity.class);
                 startActivity(intent2);

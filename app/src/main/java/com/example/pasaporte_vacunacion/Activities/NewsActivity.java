@@ -68,9 +68,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
 
-        //LoadJSON();
         onLoadingSwipeRefresh("");
-
     }
 
     public void LoadJSON(final String keyword){
@@ -163,11 +161,11 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
                 return true;
             case R.id.mNoticias:
                 return true;
-            case R.id.mStats:
+            /* case R.id.mStats:
                 //Intent intent1 = new Intent(this, TrackActivity.class);
                 //startActivity(intent1);
                 Toast.makeText(NewsActivity.this, "Estadísticas COVID", Toast.LENGTH_SHORT).show();
-                return true;
+                return true;*/
             case R.id.mContraseña:
                 Intent intent2 = new Intent(this, CambiarContActivity.class);
                 startActivity(intent2);
