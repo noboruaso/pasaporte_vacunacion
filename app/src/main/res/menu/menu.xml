@@ -24,7 +24,7 @@
         app:showAsAction="always"
         />
     <item
-        android:title="Mapa Covid"
+        android:title="Mapa MINSA"
         android:id="@+id/mMapa"
     />
 </menu>

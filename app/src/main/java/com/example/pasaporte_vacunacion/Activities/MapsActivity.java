@@ -4,8 +4,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.pasaporte_vacunacion.Activities.databinding.ActivityMapsBinding;
+
 import com.example.pasaporte_vacunacion.R;
+import com.example.pasaporte_vacunacion.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-12.073382418698131, -77.04135870208721);
         mMap.addMarker(new MarkerOptions().position(sydney).title("ESTAMOS EN EL MINSA"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(sydney, 14.0f) );
     }
 }

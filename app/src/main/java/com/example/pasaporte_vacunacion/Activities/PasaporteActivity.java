@@ -143,6 +143,10 @@ public class PasaporteActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, CambiarContActivity.class);
                 startActivity(intent2);
                 return true;
+            case R.id.mMapa:
+                Intent intent3 = new Intent(this, MapsActivity.class);
+                startActivity(intent3);
+                return true;
             case R.id.mCerrar:  cerrarSesion(); return true;
             default: return super.onOptionsItemSelected(item);
         }

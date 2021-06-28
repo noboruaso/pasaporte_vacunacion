@@ -130,6 +130,10 @@ public class CambiarContActivity extends AppCompatActivity {
                 //startActivity(intent3);
                 Toast.makeText(CambiarContActivity.this, "Estadísticas COVID", Toast.LENGTH_SHORT).show();
                 return true;*/
+            case R.id.mMapa:
+                Intent intent3 = new Intent(this, MapsActivity.class);
+                startActivity(intent3);
+                return true;
             case R.id.mContraseña:
                 return true;
             case R.id.mCerrar:  cerrarSesion(); return true;
