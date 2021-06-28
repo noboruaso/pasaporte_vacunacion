@@ -23,4 +23,8 @@
         android:icon="@drawable/ic_signout"
         app:showAsAction="always"
         />
+    <item
+        android:title="Mapa Covid"
+        android:id="@+id/mMapa"
+    />
 </menu>
