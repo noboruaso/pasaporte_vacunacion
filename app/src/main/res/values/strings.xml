@@ -16,4 +16,5 @@
     <string name="r_bold" tools:ignore="ReferenceType">@font/rubikbold</string>
     <string name="r_regular" tools:ignore="ReferenceType">@font/rubikregular</string>
     <string name="r_light" tools:ignore="ReferenceType">@font/rubiklight</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
